@@ -11,7 +11,8 @@ HOSPITALS = [
         "categoria": "Geral",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 9,
+        "municipio": "Maianga",
         "endereco": "Maianga"
     },
     {
@@ -21,7 +22,8 @@ HOSPITALS = [
         "categoria": "Materno-Infantil",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 10,
+        "municipio": "Samba",
         "endereco": "Samba"
     },
     {
@@ -31,7 +33,8 @@ HOSPITALS = [
         "categoria": "Geral",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 16,
+        "municipio": "Talatona",
         "endereco": "Talatona"
     },
     {
@@ -41,7 +44,8 @@ HOSPITALS = [
         "categoria": "Geral",
         "provincia_id": 2,
         "provincia_nome": "Bengo",
-        "municipio": "Caxito",
+        "municipio_id": 18,
+        "municipio": "Dande",
         "endereco": "Centro"
     },
     {
@@ -51,6 +55,7 @@ HOSPITALS = [
         "categoria": "Geral",
         "provincia_id": 3,
         "provincia_nome": "Benguela",
+        "municipio_id": 38,
         "municipio": "Benguela",
         "endereco": "Centro"
     },
@@ -61,6 +66,7 @@ HOSPITALS = [
         "categoria": "Geral",
         "provincia_id": 3,
         "provincia_nome": "Benguela",
+        "municipio_id": 37,
         "municipio": "Lobito",
         "endereco": "Centro"
     },
@@ -69,8 +75,9 @@ HOSPITALS = [
         "nome": "Hospital Central do Huambo",
         "tipo": "Público",
         "categoria": "Central",
-        "provincia_id": 10,
+        "provincia_id": 11,
         "provincia_nome": "Huambo",
+        "municipio_id": 162,
         "municipio": "Huambo",
         "endereco": "Centro"
     },
@@ -79,8 +86,9 @@ HOSPITALS = [
         "nome": "Hospital Central da Huíla",
         "tipo": "Público",
         "categoria": "Central",
-        "provincia_id": 11,
+        "provincia_id": 12,
         "provincia_nome": "Huíla",
+        "municipio_id": 183,
         "municipio": "Lubango",
         "endereco": "Centro"
     },
@@ -91,7 +99,8 @@ HOSPITALS = [
         "categoria": "Pediátrico",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 8,
+        "municipio": "Rangel",
         "endereco": "Sambizanga"
     }
 ]

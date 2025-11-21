@@ -10,7 +10,8 @@ MARKETS = [
         "tipo": "Informal",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 2,
+        "municipio": "Cacuaco",
         "especialidade": "Diversos"
     },
     {
@@ -19,7 +20,8 @@ MARKETS = [
         "tipo": "Formal",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 9,
+        "municipio": "Maianga",
         "especialidade": "Alimentação"
     },
     {
@@ -28,6 +30,7 @@ MARKETS = [
         "tipo": "Informal",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
+        "municipio_id": 3,
         "municipio": "Cazenga",
         "especialidade": "Diversos"
     },
@@ -37,6 +40,7 @@ MARKETS = [
         "tipo": "Municipal",
         "provincia_id": 3,
         "provincia_nome": "Benguela",
+        "municipio_id": 33,
         "municipio": "Catumbela",
         "especialidade": "Alimentação"
     },
@@ -46,6 +50,7 @@ MARKETS = [
         "tipo": "Municipal",
         "provincia_id": 3,
         "provincia_nome": "Benguela",
+        "municipio_id": 37,
         "municipio": "Lobito",
         "especialidade": "Diversos"
     },
@@ -53,8 +58,9 @@ MARKETS = [
         "id": 6,
         "nome": "Mercado do Huambo",
         "tipo": "Municipal",
-        "provincia_id": 10,
+        "provincia_id": 11,
         "provincia_nome": "Huambo",
+        "municipio_id": 162,
         "municipio": "Huambo",
         "especialidade": "Alimentação e Artesanato"
     },
@@ -62,8 +68,9 @@ MARKETS = [
         "id": 7,
         "nome": "Mercado da Tchavola",
         "tipo": "Informal",
-        "provincia_id": 11,
+        "provincia_id": 12,
         "provincia_nome": "Huíla",
+        "municipio_id": 183,
         "municipio": "Lubango",
         "especialidade": "Diversos"
     }

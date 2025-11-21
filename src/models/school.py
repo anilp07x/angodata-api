@@ -10,7 +10,8 @@ SCHOOLS = [
         "tipo": "Pública",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 9,
+        "municipio": "Maianga",
         "endereco": "Maianga"
     },
     {
@@ -19,7 +20,8 @@ SCHOOLS = [
         "tipo": "Privada",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
-        "municipio": "Luanda",
+        "municipio_id": 16,
+        "municipio": "Talatona",
         "endereco": "Talatona"
     },
     {
@@ -28,6 +30,7 @@ SCHOOLS = [
         "tipo": "Pública",
         "provincia_id": 1,
         "provincia_nome": "Luanda",
+        "municipio_id": 3,
         "municipio": "Cazenga",
         "endereco": "Hoji Ya Henda"
     },
@@ -37,6 +40,7 @@ SCHOOLS = [
         "tipo": "Pública",
         "provincia_id": 3,
         "provincia_nome": "Benguela",
+        "municipio_id": 38,
         "municipio": "Benguela",
         "endereco": "Centro"
     },
@@ -46,6 +50,7 @@ SCHOOLS = [
         "tipo": "Pública",
         "provincia_id": 3,
         "provincia_nome": "Benguela",
+        "municipio_id": 37,
         "municipio": "Lobito",
         "endereco": "Compão"
     },
@@ -53,8 +58,9 @@ SCHOOLS = [
         "id": 6,
         "nome": "Instituto Médio de Economia do Huambo",
         "tipo": "Pública",
-        "provincia_id": 10,
+        "provincia_id": 11,
         "provincia_nome": "Huambo",
+        "municipio_id": 162,
         "municipio": "Huambo",
         "endereco": "Centro"
     },
@@ -62,8 +68,9 @@ SCHOOLS = [
         "id": 7,
         "nome": "Escola Secundária da Tchivinguiro",
         "tipo": "Pública",
-        "provincia_id": 11,
+        "provincia_id": 12,
         "provincia_nome": "Huíla",
+        "municipio_id": 183,
         "municipio": "Lubango",
         "endereco": "Tchivinguiro"
     },
@@ -71,9 +78,10 @@ SCHOOLS = [
         "id": 8,
         "nome": "Colégio Ekuikui II",
         "tipo": "Privada",
-        "provincia_id": 11,
+        "provincia_id": 12,
         "provincia_nome": "Huíla",
+        "municipio_id": 183,
         "municipio": "Lubango",
-        "endereco": "Centro"
+        "endereco": "Tchioco"
     }
 ]
