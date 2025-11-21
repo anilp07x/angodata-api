@@ -1,68 +1,157 @@
 # AngoData API - AI Coding Agent Instructions
 
 ## Project Overview
-This is a Flask-based REST API project named "AngoData API". Currently in early development stage with a minimal setup consisting of a single entry point (`app.py`).
+REST API em Flask que fornece dados públicos de Angola (províncias, municípios, escolas, mercados e hospitais). Arquitetura modular e escalável usando padrão Factory, Blueprints e separação de responsabilidades.
 
 ## Tech Stack
 - **Python**: 3.12.3
 - **Web Framework**: Flask 3.1.2
-- **Key Dependencies**: Werkzeug 3.1.3, Jinja2 3.1.6, Click 8.3.1
+- **CORS**: Flask-CORS 5.0.0
+- **Dados**: In-memory (futuro: SQLAlchemy + PostgreSQL)
 
 ## Project Structure
 ```
 angodata-api/
-├── app.py          # Main Flask application entry point
-└── venv/           # Python virtual environment (do not modify)
+├── app.py                      # Ponto de entrada da aplicação
+├── requirements.txt            # Dependências Python
+├── src/
+│   ├── __init__.py            # Factory function create_app()
+│   ├── config/
+│   │   ├── __init__.py
+│   │   └── config.py          # Configurações por ambiente
+│   ├── models/                # Dados in-memory (structs)
+│   │   ├── __init__.py
+│   │   ├── province.py
+│   │   ├── municipality.py
+│   │   ├── school.py
+│   │   ├── market.py
+│   │   └── hospital.py
+│   ├── services/              # Lógica de negócio
+│   │   ├── __init__.py
+│   │   ├── province_service.py
+│   │   ├── municipality_service.py
+│   │   ├── school_service.py
+│   │   ├── market_service.py
+│   │   └── hospital_service.py
+│   ├── routes/                # Blueprints (endpoints)
+│   │   ├── __init__.py
+│   │   ├── provinces.py
+│   │   ├── municipalities.py
+│   │   ├── schools.py
+│   │   ├── markets.py
+│   │   └── hospitals.py
+│   └── database/              # Placeholder para futuro DB
+│       └── __init__.py
+└── venv/                      # Virtual environment
 ```
 
-## Development Setup
+## Architecture Patterns
 
-### Environment Activation
-Always activate the virtual environment before running any Python commands:
+### Factory Pattern
+A aplicação usa `create_app()` em `src/__init__.py` para inicialização modular:
+- Permite diferentes configurações (development/production)
+- Facilita testes unitários
+- Registra Blueprints, CORS e error handlers centralizadamente
+
+### Three-Layer Architecture
+1. **Routes (Blueprints)**: Recebem requests HTTP, validam entrada
+2. **Services**: Contêm lógica de negócio, manipulam dados
+3. **Models**: Estruturas de dados (atualmente in-memory lists de dicts)
+
+### Blueprint Organization
+Cada entidade tem seu Blueprint com URL prefix:
+- `/provinces/all` e `/provinces/<id>`
+- `/municipalities/all` e `/municipalities/<id>`
+- `/schools/all` e `/schools/<id>`
+- `/markets/all` e `/markets/<id>`
+- `/hospitals/all` e `/hospitals/<id>`
+
+## Development Workflow
+
+### Environment Setup
 ```bash
+# Ativar virtual environment
 source venv/bin/activate
+
+# Instalar dependências
+pip install -r requirements.txt
 ```
 
 ### Running the Application
-The app runs in debug mode by default via:
 ```bash
+# Executar em modo development (debug=True)
 python app.py
-```
-This starts the development server with debug=True for hot reloading.
 
-### Installing New Dependencies
-Use pip within the activated virtual environment:
+# API estará disponível em http://0.0.0.0:5000
+```
+
+### Testing Endpoints
 ```bash
-source venv/bin/activate
-pip install <package-name>
+# Home endpoint
+curl http://localhost:5000/
+
+# Listar todas as províncias
+curl http://localhost:5000/provinces/all
+
+# Buscar província específica
+curl http://localhost:5000/provinces/1
 ```
 
 ## Code Conventions
 
 ### Language & Messages
-- **Portuguese**: User-facing messages and responses are in Portuguese (e.g., "AngoData API a funcionar!")
-- Keep API responses and error messages in Portuguese unless specified otherwise
+- **Português**: Todos os responses da API, mensagens de erro e nomes de campos em português
+- **Inglês**: Código, comentários técnicos, nomes de funções/classes
 
-### Route Patterns
-- Use Flask's route decorators with HTTP method shortcuts: `@app.get()`, `@app.post()`, etc.
-- Return dictionary objects directly - Flask handles JSON serialization
-- Example from `app.py`:
-  ```python
-  @app.get("/")
-  def home():
-      return {"message": "AngoData API a funcionar!"}
-  ```
+### Response Format
+Todas as respostas seguem padrão consistente:
+```python
+# Sucesso
+{
+    "success": True,
+    "total": 18,  # Para listagens
+    "data": [...]
+}
 
-### Application Structure
-- Single file architecture currently (`app.py`)
-- Main Flask app instance: `app = Flask(__name__)`
-- Direct execution: `if __name__ == "__main__":`
+# Erro
+{
+    "success": False,
+    "message": "Descrição do erro em português"
+}
+```
 
-## Current Endpoints
-- `GET /` - Health check endpoint returning status message in Portuguese
+### Service Layer Pattern
+Services usam métodos estáticos para operações de dados:
+- `get_all()`: Retorna lista completa
+- `get_by_id(id)`: Retorna item específico ou None
+- `get_by_province(province_id)`: Filtra por província (onde aplicável)
+
+### Import Organization
+Imports absolutos a partir de `src/`:
+```python
+from src.models.province import PROVINCES
+from src.services.province_service import ProvinceService
+```
+
+## Current Limitations & Future Roadmap
+
+### Database Migration
+- **Atual**: Dados in-memory em listas Python
+- **Futuro**: Migrar para SQLAlchemy + PostgreSQL
+- Estrutura preparada em `src/database/` para integração
+
+### Planned Features
+- Validação de dados com Marshmallow
+- Autenticação JWT
+- Paginação para endpoints `/all`
+- Filtros e busca avançada
+- Testes unitários e integração
+- Variáveis de ambiente com python-dotenv
+- Documentação OpenAPI/Swagger
 
 ## Important Notes
-- No git repository initialized yet - version control not in place
-- No requirements.txt or other dependency management files - consider creating when adding new packages
-- Debug mode is enabled - suitable for development but should be disabled for production
-- No environment variables, configuration files, or database connections configured yet
+- CORS habilitado globalmente - restringir em produção
+- Debug mode ativo - desabilitar para production
+- Sem banco de dados - dados resetam ao reiniciar
+- Sem autenticação - endpoints totalmente públicos
+- JSON formatado com `JSON_AS_ASCII=False` para suportar acentuação portuguesa
