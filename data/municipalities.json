@@ -1,0 +1,1958 @@
+[
+  {
+    "id": 1,
+    "nome": "Belas",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 2,
+    "nome": "Cacuaco",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 3,
+    "nome": "Cazenga",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 4,
+    "nome": "Kilamba Kiaxi",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 5,
+    "nome": "Viana",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 6,
+    "nome": "Mussulo",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 7,
+    "nome": "Sambizanga",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 8,
+    "nome": "Rangel",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 9,
+    "nome": "Maianga",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 10,
+    "nome": "Samba",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 11,
+    "nome": "Camama",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 12,
+    "nome": "Mulenvos",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 13,
+    "nome": "Kilamba",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 14,
+    "nome": "Hoji Ya Henda",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 15,
+    "nome": "Ingombota",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 16,
+    "nome": "Talatona",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda"
+  },
+  {
+    "id": 17,
+    "nome": "Bula Atumba",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 18,
+    "nome": "Dande",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 19,
+    "nome": "Quibaxe",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 20,
+    "nome": "Nambuangongo",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 21,
+    "nome": "Pango Aluquém",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 22,
+    "nome": "Ambriz",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 23,
+    "nome": "Muxaluando",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 24,
+    "nome": "Piri",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 25,
+    "nome": "Quicunzo",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 26,
+    "nome": "Úcua",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 27,
+    "nome": "Panguila",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 28,
+    "nome": "Barra do Dande",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo"
+  },
+  {
+    "id": 29,
+    "nome": "Baía Farta",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 30,
+    "nome": "Balombo",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 31,
+    "nome": "Bocoio",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 32,
+    "nome": "Caimbambo",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 33,
+    "nome": "Catumbela",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 34,
+    "nome": "Chongorói",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 35,
+    "nome": "Cubal",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 36,
+    "nome": "Ganda",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 37,
+    "nome": "Lobito",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 38,
+    "nome": "Benguela",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 39,
+    "nome": "Egito Praia",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 40,
+    "nome": "Chindumbo",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 41,
+    "nome": "Dombe Grande",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 42,
+    "nome": "Capupa",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 43,
+    "nome": "Biópio",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 44,
+    "nome": "Chila",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 45,
+    "nome": "Chicuma",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 46,
+    "nome": "Babaera",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 47,
+    "nome": "Iambala",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 48,
+    "nome": "Catengue",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 49,
+    "nome": "Bolonguera",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 50,
+    "nome": "Canhamela",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 51,
+    "nome": "Navegantes",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela"
+  },
+  {
+    "id": 52,
+    "nome": "Andulo",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 53,
+    "nome": "Camacupa",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 54,
+    "nome": "Catabola",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 55,
+    "nome": "Chinguar",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 56,
+    "nome": "Chitembo",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 57,
+    "nome": "Cuemba",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 58,
+    "nome": "Cuito",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 59,
+    "nome": "Cunhinga",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 60,
+    "nome": "Nharêa",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 61,
+    "nome": "Luando",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 62,
+    "nome": "Ringoma",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 63,
+    "nome": "Mumbué",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 64,
+    "nome": "Calucinga",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 65,
+    "nome": "Chicala",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 66,
+    "nome": "Chipeta",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 67,
+    "nome": "Umpulo",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 68,
+    "nome": "Lúbia",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 69,
+    "nome": "Cambândua",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 70,
+    "nome": "Belo Horizonte",
+    "provincia_id": 4,
+    "provincia_nome": "Bié"
+  },
+  {
+    "id": 71,
+    "nome": "Belize",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 72,
+    "nome": "Buco-Zau",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 73,
+    "nome": "Cabinda",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 74,
+    "nome": "Cacongo",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 75,
+    "nome": "Miconje",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 76,
+    "nome": "Massabi",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 77,
+    "nome": "Necuto",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 78,
+    "nome": "Tando Zinze",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 79,
+    "nome": "Liambo",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 80,
+    "nome": "Ngoio",
+    "provincia_id": 5,
+    "provincia_nome": "Cabinda"
+  },
+  {
+    "id": 81,
+    "nome": "Cuito Cuanavale",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 82,
+    "nome": "Dirico",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 83,
+    "nome": "Mavinga",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 84,
+    "nome": "Rivungo",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 85,
+    "nome": "Xipundo",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 86,
+    "nome": "Dima",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 87,
+    "nome": "Luiana",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 88,
+    "nome": "Mucusso",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 89,
+    "nome": "Luengue",
+    "provincia_id": 6,
+    "provincia_nome": "Cuando"
+  },
+  {
+    "id": 90,
+    "nome": "Calai",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 91,
+    "nome": "Cuangar",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 92,
+    "nome": "Cuchi",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 93,
+    "nome": "Cutato",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 94,
+    "nome": "Caiundo",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 95,
+    "nome": "Longa",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 96,
+    "nome": "Menongue",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 97,
+    "nome": "Nancova",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 98,
+    "nome": "Savate",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 99,
+    "nome": "Chinguanja",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 100,
+    "nome": "Mavengue",
+    "provincia_id": 7,
+    "provincia_nome": "Cubango"
+  },
+  {
+    "id": 101,
+    "nome": "Ambaca",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 102,
+    "nome": "Banga",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 103,
+    "nome": "Bolongongo",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 104,
+    "nome": "Cambambe",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 105,
+    "nome": "Cazengo",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 106,
+    "nome": "Golungo Alto",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 107,
+    "nome": "Lucala",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 108,
+    "nome": "Ngonguembo",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 109,
+    "nome": "Quiculungo",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 110,
+    "nome": "Samba Cajú",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 111,
+    "nome": "Massangano",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 112,
+    "nome": "Cêrca",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 113,
+    "nome": "Tango",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 114,
+    "nome": "Terreiro",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 115,
+    "nome": "Aldeia Nova",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 116,
+    "nome": "Caculo Cabaça",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 117,
+    "nome": "Luinga",
+    "provincia_id": 8,
+    "provincia_nome": "Cuanza Norte"
+  },
+  {
+    "id": 118,
+    "nome": "Gabela",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 119,
+    "nome": "Cassongue",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 120,
+    "nome": "Waku Kungo",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 121,
+    "nome": "Conda",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 122,
+    "nome": "Ebo",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 123,
+    "nome": "Calulo",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 124,
+    "nome": "Mussende",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 125,
+    "nome": "Porto Amboim",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 126,
+    "nome": "Quibala",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 127,
+    "nome": "Quilenda",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 128,
+    "nome": "Seles",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 129,
+    "nome": "Sumbe",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 130,
+    "nome": "Quirimbo",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 131,
+    "nome": "Munenga",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 132,
+    "nome": "Quissongo",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 133,
+    "nome": "Gungo",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 134,
+    "nome": "Sanga",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 135,
+    "nome": "Gangula",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 136,
+    "nome": "Pambangala",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 137,
+    "nome": "Condé",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 138,
+    "nome": "Amboiva",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 139,
+    "nome": "Lonhe",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 140,
+    "nome": "Quenha",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 141,
+    "nome": "Boa Entrada",
+    "provincia_id": 9,
+    "provincia_nome": "Cuanza Sul"
+  },
+  {
+    "id": 142,
+    "nome": "Cahama",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 143,
+    "nome": "Cuanhama",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 144,
+    "nome": "Curoca",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 145,
+    "nome": "Cuvelai",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 146,
+    "nome": "Namacunde",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 147,
+    "nome": "Ombandja",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 148,
+    "nome": "Chiéde",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 149,
+    "nome": "Nehone",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 150,
+    "nome": "Humbe",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 151,
+    "nome": "Mupa",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 152,
+    "nome": "Naulila",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 153,
+    "nome": "Chitado",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 154,
+    "nome": "Cafima",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 155,
+    "nome": "Chissuata",
+    "provincia_id": 10,
+    "provincia_nome": "Cunene"
+  },
+  {
+    "id": 156,
+    "nome": "Bailundo",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 157,
+    "nome": "Caála",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 158,
+    "nome": "Cachiungo",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 159,
+    "nome": "Chicala",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 160,
+    "nome": "Chinjenje",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 161,
+    "nome": "Ecunha",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 162,
+    "nome": "Huambo",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 163,
+    "nome": "Londuimbali",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 164,
+    "nome": "Longonjo",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 165,
+    "nome": "Mungo",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 166,
+    "nome": "Ucuma",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 167,
+    "nome": "Bimbe",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 168,
+    "nome": "Sambo",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 169,
+    "nome": "Galanga",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 170,
+    "nome": "Alto Hama",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 171,
+    "nome": "Chilata",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 172,
+    "nome": "Cuima",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo"
+  },
+  {
+    "id": 173,
+    "nome": "Caconda",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 174,
+    "nome": "Cacula",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 175,
+    "nome": "Caluquembe",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 176,
+    "nome": "Chibia",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 177,
+    "nome": "Chicomba",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 178,
+    "nome": "Chipindo",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 179,
+    "nome": "Cuvango",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 180,
+    "nome": "Gambos",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 181,
+    "nome": "Humpata",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 182,
+    "nome": "Jamba Mineira",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 183,
+    "nome": "Lubango",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 184,
+    "nome": "Matala",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 185,
+    "nome": "Quilengues",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 186,
+    "nome": "Quipungo",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 187,
+    "nome": "Dongo",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 188,
+    "nome": "António Kahala",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 189,
+    "nome": "Hoque",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 190,
+    "nome": "Capelongo",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 191,
+    "nome": "Chituto",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 192,
+    "nome": "Capunda Cavilongo",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 193,
+    "nome": "Viti Vivali",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 194,
+    "nome": "Galangue",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 195,
+    "nome": "Palanca",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 196,
+    "nome": "Chicungo",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla"
+  },
+  {
+    "id": 197,
+    "nome": "Cambulo",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 198,
+    "nome": "Capenda Camulemba",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 199,
+    "nome": "Caungula",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 200,
+    "nome": "Chitato",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 201,
+    "nome": "Cuango",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 202,
+    "nome": "Cuílo",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 203,
+    "nome": "Lubalo",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 204,
+    "nome": "Lucapa",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 205,
+    "nome": "Lóvua",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 206,
+    "nome": "Xá-Muteba",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 207,
+    "nome": "Dundo",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 208,
+    "nome": "Xá Cassau",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 209,
+    "nome": "Camaxilo",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 210,
+    "nome": "Luangue",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 211,
+    "nome": "Luremo",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 212,
+    "nome": "Canzar",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 213,
+    "nome": "Cassanje Calucala",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 214,
+    "nome": "Mussungue",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 215,
+    "nome": "Cafunfu",
+    "provincia_id": 13,
+    "provincia_nome": "Lunda Norte"
+  },
+  {
+    "id": 216,
+    "nome": "Cacolo",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 217,
+    "nome": "Dala",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 218,
+    "nome": "Muconda",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 219,
+    "nome": "Saurimo",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 220,
+    "nome": "Chiluage",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 221,
+    "nome": "Cassai-Sul",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 222,
+    "nome": "Xassengue",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 223,
+    "nome": "Alto Chicapa",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 224,
+    "nome": "Sombo",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 225,
+    "nome": "Muriege",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 226,
+    "nome": "Luma Cassai",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 227,
+    "nome": "Cazage",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 228,
+    "nome": "Muangueji",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 229,
+    "nome": "Cassengo",
+    "provincia_id": 14,
+    "provincia_nome": "Lunda Sul"
+  },
+  {
+    "id": 230,
+    "nome": "Cacuso",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 231,
+    "nome": "Cahombo",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 232,
+    "nome": "Calandula",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 233,
+    "nome": "Cambundi Catembo",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 234,
+    "nome": "Cangandala",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 235,
+    "nome": "Kiwaba Nzoji",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 236,
+    "nome": "Kunda Dya Baze",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 237,
+    "nome": "Luquembo",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 238,
+    "nome": "Malanje",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 239,
+    "nome": "Marimba",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 240,
+    "nome": "Massango",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 241,
+    "nome": "Quela",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 242,
+    "nome": "Quirima",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 243,
+    "nome": "Cateco Cangola",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 244,
+    "nome": "Cuale",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 245,
+    "nome": "Pungo A Ndongo",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 246,
+    "nome": "Ngola Luiji",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 247,
+    "nome": "Quihuhu",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 248,
+    "nome": "Xandel",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 249,
+    "nome": "Cambo Suinginge",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 250,
+    "nome": "Milando",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 251,
+    "nome": "Quitapa",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 252,
+    "nome": "Capunda",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 253,
+    "nome": "Muquixe",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 254,
+    "nome": "Quêssua",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 255,
+    "nome": "Caculama",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 256,
+    "nome": "Mbanji Ya Ngola",
+    "provincia_id": 15,
+    "provincia_nome": "Malanje"
+  },
+  {
+    "id": 257,
+    "nome": "Chiúme",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 258,
+    "nome": "Lumbala Nguimbo",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 259,
+    "nome": "Camanongue",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 260,
+    "nome": "Léua",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 261,
+    "nome": "Lutembo",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 262,
+    "nome": "Cangumbe",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 263,
+    "nome": "Luena",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 264,
+    "nome": "Cangamba",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 265,
+    "nome": "Lucusse",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 266,
+    "nome": "Ninda",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 267,
+    "nome": "Lutuai",
+    "provincia_id": 16,
+    "provincia_nome": "Moxico"
+  },
+  {
+    "id": 268,
+    "nome": "Cazombo",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 269,
+    "nome": "Luacano",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 270,
+    "nome": "Cameia",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 271,
+    "nome": "Luau",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 272,
+    "nome": "Nana Candundo",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 273,
+    "nome": "Macondo",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 274,
+    "nome": "Caianda",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 275,
+    "nome": "Lóvua do Zambeze",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 276,
+    "nome": "Lago Dilolo",
+    "provincia_id": 17,
+    "provincia_nome": "Moxico Leste"
+  },
+  {
+    "id": 277,
+    "nome": "Moçâmedes",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 278,
+    "nome": "Camucuio",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 279,
+    "nome": "Bibala",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 280,
+    "nome": "Virei",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 281,
+    "nome": "Tômbua",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 282,
+    "nome": "Lucira",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 283,
+    "nome": "Iona",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 284,
+    "nome": "Sacomar",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 285,
+    "nome": "Cacimbas",
+    "provincia_id": 18,
+    "provincia_nome": "Namibe"
+  },
+  {
+    "id": 286,
+    "nome": "Uíge",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 287,
+    "nome": "Cangola",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 288,
+    "nome": "Ambuíla",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 289,
+    "nome": "Bembe",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 290,
+    "nome": "Nova Esperança",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 291,
+    "nome": "Bungo",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 292,
+    "nome": "Milunga",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 293,
+    "nome": "Damba",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 294,
+    "nome": "Maquela do Zombo",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 295,
+    "nome": "Mucaba",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 296,
+    "nome": "Negage",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 297,
+    "nome": "Puri",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 298,
+    "nome": "Quimbele",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 299,
+    "nome": "Dange Quitexe",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 300,
+    "nome": "Sanza Pombo",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 301,
+    "nome": "Songo",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 302,
+    "nome": "Sacandica",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 303,
+    "nome": "Nsosso",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 304,
+    "nome": "Lucunga",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 305,
+    "nome": "Quipedro",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 306,
+    "nome": "Massau",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 307,
+    "nome": "Vista Alegre",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 308,
+    "nome": "Alto Zaza",
+    "provincia_id": 19,
+    "provincia_nome": "Uíge"
+  },
+  {
+    "id": 309,
+    "nome": "Mbanza Kongo",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 310,
+    "nome": "Soyo",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 311,
+    "nome": "Nzeto",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 312,
+    "nome": "Cuimba",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 313,
+    "nome": "Nóqui",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 314,
+    "nome": "Tomboco",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 315,
+    "nome": "Luvo",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 316,
+    "nome": "Lufico",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 317,
+    "nome": "Quêlo",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 318,
+    "nome": "Serra de Canda",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 319,
+    "nome": "Quindeje",
+    "provincia_id": 20,
+    "provincia_nome": "Zaire"
+  },
+  {
+    "id": 320,
+    "nome": "Catete",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  },
+  {
+    "id": 321,
+    "nome": "Quiçama",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  },
+  {
+    "id": 322,
+    "nome": "Calumbo",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  },
+  {
+    "id": 323,
+    "nome": "Cabiri",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  },
+  {
+    "id": 324,
+    "nome": "Cabo Ledo",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  },
+  {
+    "id": 325,
+    "nome": "Bom Jesus",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  },
+  {
+    "id": 326,
+    "nome": "Sequele",
+    "provincia_id": 21,
+    "provincia_nome": "Icolo e Bengo"
+  }
+]
