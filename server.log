@@ -1,0 +1,18 @@
+nohup: ignoring input
+ * Serving Flask app 'src'
+ * Debug mode: on
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5001
+ * Running on http://192.168.162.200:5001
+[33mPress CTRL+C to quit[0m
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 980-184-548
+127.0.0.1 - - [21/Nov/2025 19:55:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 19:56:25] "[35m[1mPOST /schools HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 19:56:51] "PUT /schools/9 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 19:57:13] "DELETE /schools/9 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 19:57:24] "[31m[1mPOST /schools HTTP/1.1[0m" 422 -
+127.0.0.1 - - [21/Nov/2025 19:57:35] "GET /schools/all?municipio_id=2 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 19:57:43] "GET /schools/all?municipio_id=9 HTTP/1.1" 200 -

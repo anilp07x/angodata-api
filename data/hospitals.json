@@ -1,0 +1,101 @@
+[
+  {
+    "id": 1,
+    "nome": "Hospital Américo Boavida",
+    "tipo": "Público",
+    "categoria": "Geral",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda",
+    "municipio_id": 9,
+    "municipio": "Maianga",
+    "endereco": "Maianga"
+  },
+  {
+    "id": 2,
+    "nome": "Hospital Josina Machel",
+    "tipo": "Público",
+    "categoria": "Materno-Infantil",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda",
+    "municipio_id": 10,
+    "municipio": "Samba",
+    "endereco": "Samba"
+  },
+  {
+    "id": 3,
+    "nome": "Clínica Girassol",
+    "tipo": "Privado",
+    "categoria": "Geral",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda",
+    "municipio_id": 16,
+    "municipio": "Talatona",
+    "endereco": "Talatona"
+  },
+  {
+    "id": 4,
+    "nome": "Hospital Provincial do Bengo",
+    "tipo": "Público",
+    "categoria": "Geral",
+    "provincia_id": 2,
+    "provincia_nome": "Bengo",
+    "municipio_id": 18,
+    "municipio": "Dande",
+    "endereco": "Centro"
+  },
+  {
+    "id": 5,
+    "nome": "Hospital Provincial de Benguela",
+    "tipo": "Público",
+    "categoria": "Geral",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela",
+    "municipio_id": 38,
+    "municipio": "Benguela",
+    "endereco": "Centro"
+  },
+  {
+    "id": 6,
+    "nome": "Hospital Municipal do Lobito",
+    "tipo": "Público",
+    "categoria": "Geral",
+    "provincia_id": 3,
+    "provincia_nome": "Benguela",
+    "municipio_id": 37,
+    "municipio": "Lobito",
+    "endereco": "Centro"
+  },
+  {
+    "id": 7,
+    "nome": "Hospital Central do Huambo",
+    "tipo": "Público",
+    "categoria": "Central",
+    "provincia_id": 11,
+    "provincia_nome": "Huambo",
+    "municipio_id": 162,
+    "municipio": "Huambo",
+    "endereco": "Centro"
+  },
+  {
+    "id": 8,
+    "nome": "Hospital Central da Huíla",
+    "tipo": "Público",
+    "categoria": "Central",
+    "provincia_id": 12,
+    "provincia_nome": "Huíla",
+    "municipio_id": 183,
+    "municipio": "Lubango",
+    "endereco": "Centro"
+  },
+  {
+    "id": 9,
+    "nome": "Hospital Pediátrico David Bernardino",
+    "tipo": "Público",
+    "categoria": "Pediátrico",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda",
+    "municipio_id": 8,
+    "municipio": "Rangel",
+    "endereco": "Sambizanga"
+  }
+]

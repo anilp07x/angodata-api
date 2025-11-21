@@ -12,5 +12,5 @@ app = create_app('development')
 if __name__ == "__main__":
     # Executar o servidor Flask em modo debug
     # Host 0.0.0.0 permite acesso de qualquer IP (útil para deploy)
-    # Port 5000 é a porta padrão do Flask
-    app.run(host='0.0.0.0', port=5000, debug=True)
+    # Port 5001 (temporário - porta 5000 em uso)
+    app.run(host='0.0.0.0', port=5001, debug=True)

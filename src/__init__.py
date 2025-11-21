@@ -24,6 +24,9 @@ def create_app(config_name='development'):
     # Carregar configurações baseadas no ambiente
     app.config.from_object(config_by_name[config_name])
     
+    # Carregar dados persistidos (se existirem)
+    load_persisted_data()
+    
     # Habilitar CORS (Cross-Origin Resource Sharing)
     # Permite que a API seja acessada de diferentes domínios
     CORS(app)
@@ -38,6 +41,39 @@ def create_app(config_name='development'):
     register_error_handlers(app)
     
     return app
+
+
+def load_persisted_data():
+    """
+    Carrega dados persistidos de arquivos JSON.
+    Se os arquivos não existirem, usa os dados hardcoded dos models.
+    """
+    from src.database.json_storage import JSONStorage
+    from src.models import province, municipality, school, market, hospital
+    
+    # Tentar carregar dados salvos
+    persisted = JSONStorage.load_all_entities()
+    
+    # Se houver dados salvos, sobrescrever os models
+    if persisted['provinces']:
+        province.PROVINCES.clear()
+        province.PROVINCES.extend(persisted['provinces'])
+    
+    if persisted['municipalities']:
+        municipality.MUNICIPALITIES.clear()
+        municipality.MUNICIPALITIES.extend(persisted['municipalities'])
+    
+    if persisted['schools']:
+        school.SCHOOLS.clear()
+        school.SCHOOLS.extend(persisted['schools'])
+    
+    if persisted['markets']:
+        market.MARKETS.clear()
+        market.MARKETS.extend(persisted['markets'])
+    
+    if persisted['hospitals']:
+        hospital.HOSPITALS.clear()
+        hospital.HOSPITALS.extend(persisted['hospitals'])
 
 
 def register_blueprints(app):

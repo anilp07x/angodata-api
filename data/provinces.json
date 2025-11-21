@@ -1,0 +1,149 @@
+[
+  {
+    "id": 1,
+    "nome": "Luanda",
+    "capital": "Ingombota",
+    "area_km2": 18826,
+    "populacao": 6945386
+  },
+  {
+    "id": 2,
+    "nome": "Bengo",
+    "capital": "Dande",
+    "area_km2": 31371,
+    "populacao": 356641
+  },
+  {
+    "id": 3,
+    "nome": "Benguela",
+    "capital": "Benguela",
+    "area_km2": 39826,
+    "populacao": 2231385
+  },
+  {
+    "id": 4,
+    "nome": "Bié",
+    "capital": "Cuito",
+    "area_km2": 70314,
+    "populacao": 1455255
+  },
+  {
+    "id": 5,
+    "nome": "Cabinda",
+    "capital": "Cabinda",
+    "area_km2": 7270,
+    "populacao": 716076
+  },
+  {
+    "id": 6,
+    "nome": "Cuando",
+    "capital": "Mavinga",
+    "area_km2": 95000,
+    "populacao": 250000
+  },
+  {
+    "id": 7,
+    "nome": "Cubango",
+    "capital": "Menongue",
+    "area_km2": 104049,
+    "populacao": 284002
+  },
+  {
+    "id": 8,
+    "nome": "Cuanza Norte",
+    "capital": "Cazengo",
+    "area_km2": 24110,
+    "populacao": 443386
+  },
+  {
+    "id": 9,
+    "nome": "Cuanza Sul",
+    "capital": "Sumbe",
+    "area_km2": 55660,
+    "populacao": 1881873
+  },
+  {
+    "id": 10,
+    "nome": "Cunene",
+    "capital": "Cuanhama",
+    "area_km2": 78342,
+    "populacao": 990087
+  },
+  {
+    "id": 11,
+    "nome": "Huambo",
+    "capital": "Huambo",
+    "area_km2": 34274,
+    "populacao": 2019555
+  },
+  {
+    "id": 12,
+    "nome": "Huíla",
+    "capital": "Lubango",
+    "area_km2": 79023,
+    "populacao": 2497422
+  },
+  {
+    "id": 13,
+    "nome": "Lunda Norte",
+    "capital": "Dundo",
+    "area_km2": 103760,
+    "populacao": 862566
+  },
+  {
+    "id": 14,
+    "nome": "Lunda Sul",
+    "capital": "Saurimo",
+    "area_km2": 77637,
+    "populacao": 537587
+  },
+  {
+    "id": 15,
+    "nome": "Malanje",
+    "capital": "Malanje",
+    "area_km2": 97602,
+    "populacao": 986363
+  },
+  {
+    "id": 16,
+    "nome": "Moxico",
+    "capital": "Luena",
+    "area_km2": 113023,
+    "populacao": 578568
+  },
+  {
+    "id": 17,
+    "nome": "Moxico Leste",
+    "capital": "Cazombo",
+    "area_km2": 110000,
+    "populacao": 180000
+  },
+  {
+    "id": 18,
+    "nome": "Namibe",
+    "capital": "Moçâmedes",
+    "area_km2": 58137,
+    "populacao": 495326
+  },
+  {
+    "id": 19,
+    "nome": "Uíge",
+    "capital": "Uíge",
+    "area_km2": 58698,
+    "populacao": 1483118
+  },
+  {
+    "id": 20,
+    "nome": "Zaire",
+    "capital": "Mbanza Kongo",
+    "area_km2": 40130,
+    "populacao": 594428
+  },
+  {
+    "id": 21,
+    "nome": "Icolo e Bengo",
+    "capital": "Catete",
+    "area_km2": 3800,
+    "populacao": 180000
+  }
+]
