@@ -16,3 +16,7 @@ nohup: ignoring input
 127.0.0.1 - - [21/Nov/2025 19:57:24] "[31m[1mPOST /schools HTTP/1.1[0m" 422 -
 127.0.0.1 - - [21/Nov/2025 19:57:35] "GET /schools/all?municipio_id=2 HTTP/1.1" 200 -
 127.0.0.1 - - [21/Nov/2025 19:57:43] "GET /schools/all?municipio_id=9 HTTP/1.1" 200 -
+ * Detected change in '/home/server-dev/projects/angodata-api/src/services/market_service.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 980-184-548
