@@ -1,12 +1,13 @@
-"""
-Rotas para operações com Mercados.
+"""Rotas para operações com Mercados.
 Blueprint que gerencia endpoints relacionados a mercados de Angola.
 """
 
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 from src.services.market_service import MarketService
 from src.schemas.market_schema import MarketSchema
+from src.utils.decorators import editor_or_admin_required
 
 # Criação do Blueprint para mercados
 markets_bp = Blueprint('markets', __name__, url_prefix='/markets')
@@ -60,10 +61,13 @@ def get_market_by_id(market_id):
 
 
 @markets_bp.route('', methods=['POST'])
+@jwt_required()
+@editor_or_admin_required()
 def create_market():
     """
     POST /markets
     Cria um novo mercado.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = market_schema.load(request.get_json())
@@ -96,10 +100,13 @@ def create_market():
 
 
 @markets_bp.route('/<int:market_id>', methods=['PUT'])
+@jwt_required()
+@editor_or_admin_required()
 def update_market(market_id):
     """
     PUT /markets/<id>
     Atualiza um mercado existente.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = market_schema.load(request.get_json(), partial=True)
@@ -132,10 +139,13 @@ def update_market(market_id):
 
 
 @markets_bp.route('/<int:market_id>', methods=['DELETE'])
+@jwt_required()
+@editor_or_admin_required()
 def delete_market(market_id):
     """
     DELETE /markets/<id>
     Deleta um mercado.
+    Requer autenticação e role: admin ou editor
     """
     try:
         deleted = MarketService.delete(market_id)

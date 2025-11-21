@@ -1,12 +1,13 @@
-"""
-Rotas para operações com Hospitais.
+"""Rotas para operações com Hospitais.
 Blueprint que gerencia endpoints relacionados a hospitais de Angola.
 """
 
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 from src.services.hospital_service import HospitalService
 from src.schemas.hospital_schema import HospitalSchema
+from src.utils.decorators import editor_or_admin_required
 
 # Criação do Blueprint para hospitais
 hospitals_bp = Blueprint('hospitals', __name__, url_prefix='/hospitals')
@@ -60,10 +61,13 @@ def get_hospital_by_id(hospital_id):
 
 
 @hospitals_bp.route('', methods=['POST'])
+@jwt_required()
+@editor_or_admin_required()
 def create_hospital():
     """
     POST /hospitals
     Cria um novo hospital.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = hospital_schema.load(request.get_json())
@@ -96,10 +100,13 @@ def create_hospital():
 
 
 @hospitals_bp.route('/<int:hospital_id>', methods=['PUT'])
+@jwt_required()
+@editor_or_admin_required()
 def update_hospital(hospital_id):
     """
     PUT /hospitals/<id>
     Atualiza um hospital existente.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = hospital_schema.load(request.get_json(), partial=True)
@@ -132,10 +139,13 @@ def update_hospital(hospital_id):
 
 
 @hospitals_bp.route('/<int:hospital_id>', methods=['DELETE'])
+@jwt_required()
+@editor_or_admin_required()
 def delete_hospital(hospital_id):
     """
     DELETE /hospitals/<id>
     Deleta um hospital.
+    Requer autenticação e role: admin ou editor
     """
     try:
         deleted = HospitalService.delete(hospital_id)

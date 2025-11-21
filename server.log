@@ -9,14 +9,43 @@ nohup: ignoring input
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 980-184-548
-127.0.0.1 - - [21/Nov/2025 19:55:54] "GET / HTTP/1.1" 200 -
-127.0.0.1 - - [21/Nov/2025 19:56:25] "[35m[1mPOST /schools HTTP/1.1[0m" 201 -
-127.0.0.1 - - [21/Nov/2025 19:56:51] "PUT /schools/9 HTTP/1.1" 200 -
-127.0.0.1 - - [21/Nov/2025 19:57:13] "DELETE /schools/9 HTTP/1.1" 200 -
-127.0.0.1 - - [21/Nov/2025 19:57:24] "[31m[1mPOST /schools HTTP/1.1[0m" 422 -
-127.0.0.1 - - [21/Nov/2025 19:57:35] "GET /schools/all?municipio_id=2 HTTP/1.1" 200 -
-127.0.0.1 - - [21/Nov/2025 19:57:43] "GET /schools/all?municipio_id=9 HTTP/1.1" 200 -
- * Detected change in '/home/server-dev/projects/angodata-api/src/services/market_service.py', reloading
+127.0.0.1 - - [21/Nov/2025 22:09:51] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:09:54] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:10:00] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:10:05] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:10:34] "[31m[1mGET /schools?provinces=2 HTTP/1.1[0m" 405 -
+127.0.0.1 - - [21/Nov/2025 22:11:03] "[31m[1mGET /schools?provincia_id=2 HTTP/1.1[0m" 405 -
+127.0.0.1 - - [21/Nov/2025 22:17:57] "GET /schools/all?provincia_id=2 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:18:39] "GET /schools/all?provincia_id=2 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:18:46] "GET /schools/all?provincia_id=1 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:19:07] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:19:30] "GET /provinces/all HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:19:42] "[31m[1mPOST /provinces HTTP/1.1[0m" 401 -
+127.0.0.1 - - [21/Nov/2025 22:20:10] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:20:10] "[35m[1mPOST /provinces HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 22:29:08] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:29:08] "[35m[1mPOST /provinces HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 22:29:37] "[33mGET /provincies/all HTTP/1.1[0m" 404 -
+127.0.0.1 - - [21/Nov/2025 22:29:47] "GET /provinces/all HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:30:30] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:30:30] "[35m[1mPOST /provinces HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 22:30:52] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:36:03] "[35m[1mPOST /provinces HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 22:36:27] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 22:36:27] "[35m[1mPOST /schools HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 23:17:26] "GET /provinces/all HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 23:17:26] "[31m[1mPOST /provinces HTTP/1.1[0m" 401 -
+127.0.0.1 - - [21/Nov/2025 23:17:27] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 23:17:27] "[35m[1mPOST /provinces HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 23:17:28] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 23:17:28] "[35m[1mPOST /schools HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 23:17:29] "DELETE /provinces/22 HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 23:17:29] "[35m[1mPOST /auth/register HTTP/1.1[0m" 201 -
+127.0.0.1 - - [21/Nov/2025 23:17:30] "POST /auth/login HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 23:17:30] "[31m[1mPOST /provinces HTTP/1.1[0m" 403 -
+127.0.0.1 - - [21/Nov/2025 23:18:06] "GET / HTTP/1.1" 200 -
+127.0.0.1 - - [21/Nov/2025 23:28:37] "[31m[1mDELETE /provinces/23 HTTP/1.1[0m" 401 -
+ * Detected change in '/home/server-dev/projects/angodata-api/src/routes/provinces.py', reloading
  * Restarting with stat
  * Debugger is active!
  * Debugger PIN: 980-184-548

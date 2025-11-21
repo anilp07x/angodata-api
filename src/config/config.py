@@ -4,6 +4,7 @@ Define diferentes ambientes (desenvolvimento, produção) e suas respectivas con
 """
 
 import os
+from datetime import timedelta
 
 
 class Config:
@@ -18,6 +19,12 @@ class Config:
     # JSON
     JSON_AS_ASCII = False  # Permite caracteres portugueses nos JSON
     JSONIFY_PRETTYPRINT_REGULAR = True  # JSON formatado
+    
+    # JWT Configuration
+    JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') or SECRET_KEY
+    JWT_ACCESS_TOKEN_EXPIRES = timedelta(seconds=int(os.environ.get('JWT_ACCESS_TOKEN_EXPIRES', 86400)))  # 24h default
+    JWT_REFRESH_TOKEN_EXPIRES = timedelta(seconds=int(os.environ.get('JWT_REFRESH_TOKEN_EXPIRES', 2592000)))  # 30d default
+    JWT_ALGORITHM = 'HS256'
     
     # Futuro: Configurações de banco de dados
     # SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')

@@ -1,12 +1,13 @@
-"""
-Rotas para operações com Municípios.
+"""Rotas para operações com Municípios.
 Blueprint que gerencia endpoints relacionados a municípios de Angola.
 """
 
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 from src.services.municipality_service import MunicipalityService
 from src.schemas.municipality_schema import MunicipalitySchema
+from src.utils.decorators import editor_or_admin_required
 
 # Criação do Blueprint para municípios
 municipalities_bp = Blueprint('municipalities', __name__, url_prefix='/municipalities')
@@ -58,10 +59,13 @@ def get_municipality_by_id(municipality_id):
 
 
 @municipalities_bp.route('', methods=['POST'])
+@jwt_required()
+@editor_or_admin_required()
 def create_municipality():
     """
     POST /municipalities
     Cria um novo município.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = municipality_schema.load(request.get_json())
@@ -94,10 +98,13 @@ def create_municipality():
 
 
 @municipalities_bp.route('/<int:municipality_id>', methods=['PUT'])
+@jwt_required()
+@editor_or_admin_required()
 def update_municipality(municipality_id):
     """
     PUT /municipalities/<id>
     Atualiza um município existente.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = municipality_schema.load(request.get_json(), partial=True)
@@ -130,10 +137,13 @@ def update_municipality(municipality_id):
 
 
 @municipalities_bp.route('/<int:municipality_id>', methods=['DELETE'])
+@jwt_required()
+@editor_or_admin_required()
 def delete_municipality(municipality_id):
     """
     DELETE /municipalities/<id>
     Deleta um município.
+    Requer autenticação e role: admin ou editor
     """
     try:
         # Verificar dependências

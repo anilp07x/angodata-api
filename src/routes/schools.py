@@ -1,12 +1,13 @@
-"""
-Rotas para operações com Escolas.
+"""Rotas para operações com Escolas.
 Blueprint que gerencia endpoints relacionados a escolas de Angola.
 """
 
 from flask import Blueprint, jsonify, request
+from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
 from src.services.school_service import SchoolService
 from src.schemas.school_schema import SchoolSchema
+from src.utils.decorators import editor_or_admin_required
 
 # Criação do Blueprint para escolas
 schools_bp = Blueprint('schools', __name__, url_prefix='/schools')
@@ -60,10 +61,13 @@ def get_school_by_id(school_id):
 
 
 @schools_bp.route('', methods=['POST'])
+@jwt_required()
+@editor_or_admin_required()
 def create_school():
     """
     POST /schools
     Cria uma nova escola.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = school_schema.load(request.get_json())
@@ -96,10 +100,13 @@ def create_school():
 
 
 @schools_bp.route('/<int:school_id>', methods=['PUT'])
+@jwt_required()
+@editor_or_admin_required()
 def update_school(school_id):
     """
     PUT /schools/<id>
     Atualiza uma escola existente.
+    Requer autenticação e role: admin ou editor
     """
     try:
         data = school_schema.load(request.get_json(), partial=True)
@@ -132,10 +139,13 @@ def update_school(school_id):
 
 
 @schools_bp.route('/<int:school_id>', methods=['DELETE'])
+@jwt_required()
+@editor_or_admin_required()
 def delete_school(school_id):
     """
     DELETE /schools/<id>
     Deleta uma escola.
+    Requer autenticação e role: admin ou editor
     """
     try:
         deleted = SchoolService.delete(school_id)

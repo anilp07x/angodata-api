@@ -78,5 +78,25 @@
     "municipio_id": 183,
     "municipio": "Lubango",
     "endereco": "Tchioco"
+  },
+  {
+    "id": 9,
+    "nome": "Escola Teste",
+    "tipo": "Pública",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda",
+    "municipio_id": 1,
+    "municipio": "Belas",
+    "endereco": "Rua Teste"
+  },
+  {
+    "id": 10,
+    "nome": "Escola Editor",
+    "tipo": "Pública",
+    "provincia_id": 1,
+    "provincia_nome": "Luanda",
+    "municipio_id": 1,
+    "municipio": "Belas",
+    "endereco": "Rua Editor"
   }
 ]

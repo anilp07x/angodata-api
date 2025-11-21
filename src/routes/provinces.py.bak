@@ -58,6 +58,7 @@ def create_province():
     """
     POST /provinces
     Cria uma nova província.
+    Requer autenticação e role: admin ou editor
     """
     try:
         # Validar dados de entrada
@@ -92,6 +93,7 @@ def update_province(province_id):
     """
     PUT /provinces/<id>
     Atualiza uma província existente.
+    Requer autenticação e role: admin ou editor
     """
     try:
         # Validar dados de entrada (partial=True para permitir updates parciais)
@@ -132,6 +134,7 @@ def delete_province(province_id):
     """
     DELETE /provinces/<id>
     Deleta uma província.
+    Requer autenticação e role: admin ou editor
     """
     try:
         # Verificar se tem municípios associados

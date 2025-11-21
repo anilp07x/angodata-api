@@ -5,6 +5,7 @@ Contém a função factory para criar e configurar a aplicação Flask.
 
 from flask import Flask, jsonify
 from flask_cors import CORS
+from flask_jwt_extended import JWTManager
 from src.config.config import config_by_name
 
 
@@ -31,6 +32,10 @@ def create_app(config_name='development'):
     # Permite que a API seja acessada de diferentes domínios
     CORS(app)
     
+    # Configurar JWT
+    jwt = JWTManager(app)
+    configure_jwt_handlers(jwt)
+    
     # Registrar Blueprints (rotas modulares)
     register_blueprints(app)
     
@@ -49,7 +54,7 @@ def load_persisted_data():
     Se os arquivos não existirem, usa os dados hardcoded dos models.
     """
     from src.database.json_storage import JSONStorage
-    from src.models import province, municipality, school, market, hospital
+    from src.models import province, municipality, school, market, hospital, user
     
     # Tentar carregar dados salvos
     persisted = JSONStorage.load_all_entities()
@@ -74,6 +79,10 @@ def load_persisted_data():
     if persisted['hospitals']:
         hospital.HOSPITALS.clear()
         hospital.HOSPITALS.extend(persisted['hospitals'])
+    
+    if persisted.get('users'):
+        user.USERS.clear()
+        user.USERS.extend(persisted['users'])
 
 
 def register_blueprints(app):
@@ -88,7 +97,8 @@ def register_blueprints(app):
         municipalities_bp,
         schools_bp,
         markets_bp,
-        hospitals_bp
+        hospitals_bp,
+        auth_bp
     )
     
     # Registrar cada Blueprint
@@ -97,6 +107,7 @@ def register_blueprints(app):
     app.register_blueprint(schools_bp)
     app.register_blueprint(markets_bp)
     app.register_blueprint(hospitals_bp)
+    app.register_blueprint(auth_bp)
 
 
 def register_home_route(app):
@@ -120,9 +131,58 @@ def register_home_route(app):
                 "municipalities": "/municipalities/all, /municipalities/<id>",
                 "schools": "/schools/all, /schools/<id>",
                 "markets": "/markets/all, /markets/<id>",
-                "hospitals": "/hospitals/all, /hospitals/<id>"
+                "hospitals": "/hospitals/all, /hospitals/<id>",
+                "auth": "/auth/register, /auth/login, /auth/refresh, /auth/me, /auth/users"
             }
         }), 200
+
+
+def configure_jwt_handlers(jwt):
+    """
+    Configura manipuladores de erros JWT personalizados.
+    
+    Args:
+        jwt (JWTManager): Instância do JWTManager
+    """
+    @jwt.expired_token_loader
+    def expired_token_callback(jwt_header, jwt_payload):
+        """Manipulador para token expirado."""
+        return jsonify({
+            "success": False,
+            "message": "O token de autenticação expirou. Por favor, faça login novamente."
+        }), 401
+    
+    @jwt.invalid_token_loader
+    def invalid_token_callback(error):
+        """Manipulador para token inválido."""
+        return jsonify({
+            "success": False,
+            "message": "Token de autenticação inválido. Por favor, forneça um token válido."
+        }), 422
+    
+    @jwt.unauthorized_loader
+    def unauthorized_callback(error):
+        """Manipulador para requisição sem token."""
+        return jsonify({
+            "success": False,
+            "message": "Token de autenticação não fornecido. Por favor, faça login."
+        }), 401
+    
+    @jwt.needs_fresh_token_loader
+    def needs_fresh_token_callback(jwt_header, jwt_payload):
+        """Manipulador para quando um token fresh é necessário."""
+        return jsonify({
+            "success": False,
+            "message": "Um token de autenticação recente é necessário. Por favor, faça login novamente."
+        }), 401
+    
+    @jwt.revoked_token_loader
+    def revoked_token_callback(jwt_header, jwt_payload):
+        """Manipulador para token revogado."""
+        return jsonify({
+            "success": False,
+            "message": "O token de autenticação foi revogado. Por favor, faça login novamente."
+        }), 401
 
 
 def register_error_handlers(app):

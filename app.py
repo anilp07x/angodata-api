@@ -3,7 +3,12 @@ AngoData API - Ponto de entrada principal da aplicação.
 Inicializa e executa o servidor Flask usando o padrão Factory.
 """
 
+import os
+from dotenv import load_dotenv
 from src import create_app
+
+# Carregar variáveis de ambiente
+load_dotenv()
 
 # Criar instância da aplicação usando a factory function
 # Por padrão, usa configuração de desenvolvimento

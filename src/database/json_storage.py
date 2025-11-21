@@ -74,12 +74,14 @@ class JSONStorage:
         from src.models.school import SCHOOLS
         from src.models.market import MARKETS
         from src.models.hospital import HOSPITALS
+        from src.models.user import USERS
         
         cls.save('provinces.json', PROVINCES)
         cls.save('municipalities.json', MUNICIPALITIES)
         cls.save('schools.json', SCHOOLS)
         cls.save('markets.json', MARKETS)
         cls.save('hospitals.json', HOSPITALS)
+        cls.save('users.json', USERS)
     
     @classmethod
     def load_all_entities(cls):
@@ -95,5 +97,6 @@ class JSONStorage:
             'municipalities': cls.load('municipalities.json'),
             'schools': cls.load('schools.json'),
             'markets': cls.load('markets.json'),
-            'hospitals': cls.load('hospitals.json')
+            'hospitals': cls.load('hospitals.json'),
+            'users': cls.load('users.json')
         }
