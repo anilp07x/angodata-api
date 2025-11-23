@@ -10,6 +10,7 @@ from flask_limiter import Limiter
 from flask_limiter.util import get_remote_address
 from src.config.config import config_by_name
 from src.utils.security import add_security_headers
+from src.utils.cache import init_cache
 
 
 def create_app(config_name='development'):
@@ -50,6 +51,9 @@ def create_app(config_name='development'):
     # Configurar JWT
     jwt = JWTManager(app)
     configure_jwt_handlers(jwt)
+    
+    # Inicializar Cache (Redis ou Memory)
+    init_cache(app)
     
     # Adicionar security headers a todas as respostas
     app.after_request(add_security_headers)

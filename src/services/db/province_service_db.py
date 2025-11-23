@@ -9,6 +9,7 @@ from sqlalchemy.exc import SQLAlchemyError
 
 from src.database.base import get_db_session
 from src.database.models import Province, Municipality
+from src.utils.pagination import PaginationHelper, SearchHelper
 
 
 class ProvinceServiceDB:
@@ -29,6 +30,53 @@ class ProvinceServiceDB:
         except SQLAlchemyError as e:
             print(f"Database error getting all provinces: {e}")
             return []
+
+    @staticmethod
+    def get_all_paginated(page: int = 1, per_page: int = 20, 
+                         sort_by: str = 'nome', order: str = 'asc',
+                         search: str = None) -> Dict[str, Any]:
+        """
+        Get paginated provinces with search and sort.
+        
+        Args:
+            page: Page number (1-indexed)
+            per_page: Items per page
+            sort_by: Field to sort by
+            order: 'asc' or 'desc'
+            search: Search term for nome or capital
+            
+        Returns:
+            Dict with paginated data and metadata
+        """
+        try:
+            with get_db_session() as session:
+                query = session.query(Province)
+                
+                # Aplicar busca
+                if search:
+                    query = SearchHelper.apply_text_search(
+                        query, Province, search, ['nome', 'capital']
+                    )
+                
+                # Aplicar ordenação
+                query = SearchHelper.apply_sorting(query, Province, sort_by, order)
+                
+                # Aplicar paginação
+                return PaginationHelper.paginate_query(query, page, per_page)
+                
+        except SQLAlchemyError as e:
+            print(f"Database error getting paginated provinces: {e}")
+            return {
+                'data': [],
+                'pagination': {
+                    'page': page,
+                    'per_page': per_page,
+                    'total_items': 0,
+                    'total_pages': 0,
+                    'has_next': False,
+                    'has_prev': False
+                }
+            }
 
     @staticmethod
     def get_by_id(province_id: int) -> Optional[Dict[str, Any]]:
@@ -197,3 +245,169 @@ class ProvinceServiceDB:
         except SQLAlchemyError as e:
             print(f"Database error checking municipalities for province {province_id}: {e}")
             return 0
+
+    @staticmethod
+    def bulk_create(provinces_data: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Create multiple provinces at once.
+        
+        Args:
+            provinces_data: List of province data dictionaries
+            
+        Returns:
+            Dict with created count and any errors
+        """
+        try:
+            with get_db_session() as session:
+                created = []
+                errors = []
+                
+                for data in provinces_data:
+                    try:
+                        province = Province(
+                            nome=data['nome'],
+                            capital=data.get('capital'),
+                            area_km2=data.get('area_km2'),
+                            populacao=data.get('populacao')
+                        )
+                        session.add(province)
+                        session.flush()
+                        created.append(province.to_dict())
+                    except Exception as e:
+                        errors.append({
+                            'data': data,
+                            'error': str(e)
+                        })
+                
+                return {
+                    'created': len(created),
+                    'failed': len(errors),
+                    'data': created,
+                    'errors': errors
+                }
+                
+        except SQLAlchemyError as e:
+            print(f"Database error in bulk create: {e}")
+            return {
+                'created': 0,
+                'failed': len(provinces_data),
+                'data': [],
+                'errors': [{'error': str(e)}]
+            }
+
+    @staticmethod
+    def bulk_update(updates: List[Dict[str, Any]]) -> Dict[str, Any]:
+        """
+        Update multiple provinces at once.
+        
+        Args:
+            updates: List of dicts with 'id' and fields to update
+            
+        Returns:
+            Dict with updated count and any errors
+        """
+        try:
+            with get_db_session() as session:
+                updated = []
+                errors = []
+                
+                for update_data in updates:
+                    try:
+                        province_id = update_data.get('id')
+                        if not province_id:
+                            errors.append({'data': update_data, 'error': 'Missing id'})
+                            continue
+                        
+                        province = session.query(Province).filter(
+                            Province.id == province_id
+                        ).first()
+                        
+                        if not province:
+                            errors.append({'id': province_id, 'error': 'Not found'})
+                            continue
+                        
+                        # Update fields
+                        if 'nome' in update_data:
+                            province.nome = update_data['nome']
+                        if 'capital' in update_data:
+                            province.capital = update_data['capital']
+                        if 'area_km2' in update_data:
+                            province.area_km2 = update_data['area_km2']
+                        if 'populacao' in update_data:
+                            province.populacao = update_data['populacao']
+                        
+                        session.flush()
+                        updated.append(province.to_dict())
+                        
+                    except Exception as e:
+                        errors.append({
+                            'data': update_data,
+                            'error': str(e)
+                        })
+                
+                return {
+                    'updated': len(updated),
+                    'failed': len(errors),
+                    'data': updated,
+                    'errors': errors
+                }
+                
+        except SQLAlchemyError as e:
+            print(f"Database error in bulk update: {e}")
+            return {
+                'updated': 0,
+                'failed': len(updates),
+                'data': [],
+                'errors': [{'error': str(e)}]
+            }
+
+    @staticmethod
+    def bulk_delete(province_ids: List[int]) -> Dict[str, Any]:
+        """
+        Delete multiple provinces at once.
+        
+        Args:
+            province_ids: List of province IDs to delete
+            
+        Returns:
+            Dict with deleted count and any errors
+        """
+        try:
+            with get_db_session() as session:
+                deleted = []
+                errors = []
+                
+                for province_id in province_ids:
+                    try:
+                        province = session.query(Province).filter(
+                            Province.id == province_id
+                        ).first()
+                        
+                        if not province:
+                            errors.append({'id': province_id, 'error': 'Not found'})
+                            continue
+                        
+                        session.delete(province)
+                        deleted.append(province_id)
+                        
+                    except Exception as e:
+                        errors.append({
+                            'id': province_id,
+                            'error': str(e)
+                        })
+                
+                return {
+                    'deleted': len(deleted),
+                    'failed': len(errors),
+                    'ids': deleted,
+                    'errors': errors
+                }
+                
+        except SQLAlchemyError as e:
+            print(f"Database error in bulk delete: {e}")
+            return {
+                'deleted': 0,
+                'failed': len(province_ids),
+                'ids': [],
+                'errors': [{'error': str(e)}]
+            }
