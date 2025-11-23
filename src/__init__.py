@@ -6,7 +6,10 @@ Contém a função factory para criar e configurar a aplicação Flask.
 from flask import Flask, jsonify
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
+from flask_limiter import Limiter
+from flask_limiter.util import get_remote_address
 from src.config.config import config_by_name
+from src.utils.security import add_security_headers
 
 
 def create_app(config_name='development'):
@@ -32,9 +35,21 @@ def create_app(config_name='development'):
     # Permite que a API seja acessada de diferentes domínios
     CORS(app)
     
+    # Configurar Rate Limiting
+    limiter = Limiter(
+        app=app,
+        key_func=get_remote_address,
+        default_limits=["200 per day", "50 per hour"],
+        storage_uri="memory://"
+    )
+    app.limiter = limiter
+    
     # Configurar JWT
     jwt = JWTManager(app)
     configure_jwt_handlers(jwt)
+    
+    # Adicionar security headers a todas as respostas
+    app.after_request(add_security_headers)
     
     # Registrar Blueprints (rotas modulares)
     register_blueprints(app)

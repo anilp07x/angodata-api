@@ -3,7 +3,7 @@ Rotas para autenticação e autorização.
 Blueprint que gerencia registro, login e gestão de usuários.
 """
 
-from flask import Blueprint, jsonify, request
+from flask import Blueprint, jsonify, request, current_app
 from flask_jwt_extended import (
     create_access_token,
     create_refresh_token,
@@ -18,6 +18,8 @@ from src.schemas.user_schema import (
     UserLoginSchema,
     UserResponseSchema
 )
+from src.utils.audit import AuditLogger, audit_log
+from src.utils.decorators import admin_required
 
 # Criação do Blueprint para autenticação
 auth_bp = Blueprint('auth', __name__, url_prefix='/auth')
@@ -81,13 +83,27 @@ def login():
     """
     POST /auth/login
     Autentica um usuário e retorna tokens JWT.
+    Rate limit: 5 tentativas por minuto
     """
+    limiter = current_app.limiter
+    limiter.limit("5 per minute")(lambda: None)()
+    
     try:
         data = login_schema.load(request.get_json())
         
         user = AuthService.authenticate(data['email'], data['password'])
         
         if user:
+            # Registrar login bem-sucedido no audit log
+            AuditLogger.log_action(
+                action='LOGIN_SUCCESS',
+                resource_type='user',
+                resource_id=user['id'],
+                user_id=user['id'],
+                user_email=user['email'],
+                details={'username': user['username']}
+            )
+            
             # Criar tokens JWT - identity deve ser string
             access_token = create_access_token(
                 identity=str(user['id']),
@@ -109,6 +125,13 @@ def login():
                 }
             }), 200
         else:
+            # Registrar tentativa de login falha
+            AuditLogger.log_action(
+                action='LOGIN_FAILED',
+                resource_type='user',
+                details={'email': data.get('email')}
+            )
+            
             return jsonify({
                 "success": False,
                 "message": "Credenciais inválidas"
@@ -225,4 +248,45 @@ def get_all_users():
         return jsonify({
             "success": False,
             "message": f"Erro ao listar usuários: {str(e)}"
+        }), 500
+
+
+@auth_bp.route('/audit/logs', methods=['GET'])
+@jwt_required()
+@admin_required()
+def get_audit_logs():
+    """
+    GET /auth/audit/logs
+    Retorna logs de auditoria (apenas para admins).
+    
+    Query parameters:
+        - limit: número máximo de logs (default: 100)
+        - action: filtrar por tipo de ação
+        - resource_type: filtrar por tipo de recurso
+        - user_id: filtrar por ID do usuário
+    """
+    try:
+        # Obter parâmetros de query
+        limit = request.args.get('limit', 100, type=int)
+        action = request.args.get('action')
+        resource_type = request.args.get('resource_type')
+        user_id = request.args.get('user_id')
+        
+        # Buscar logs
+        logs = AuditLogger.get_logs(
+            limit=limit,
+            action=action,
+            resource_type=resource_type,
+            user_id=user_id
+        )
+        
+        return jsonify({
+            "success": True,
+            "total": len(logs),
+            "data": logs
+        }), 200
+    except Exception as e:
+        return jsonify({
+            "success": False,
+            "message": f"Erro ao buscar logs de auditoria: {str(e)}"
         }), 500

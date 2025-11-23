@@ -9,6 +9,7 @@ from marshmallow import ValidationError
 from src.services.province_service import ProvinceService
 from src.schemas.province_schema import ProvinceSchema
 from src.utils.decorators import editor_or_admin_required
+from src.utils.audit import audit_log
 
 # Criação do Blueprint para províncias
 provinces_bp = Blueprint('provinces', __name__, url_prefix='/provinces')
@@ -54,6 +55,7 @@ def get_province_by_id(province_id):
 @provinces_bp.route('', methods=['POST'])
 @jwt_required()
 @editor_or_admin_required()
+@audit_log('CREATE', 'province')
 def create_province():
     """
     POST /provinces
@@ -88,6 +90,7 @@ def create_province():
 @provinces_bp.route('/<int:province_id>', methods=['PUT'])
 @jwt_required()
 @editor_or_admin_required()
+@audit_log('UPDATE', 'province')
 def update_province(province_id):
     """
     PUT /provinces/<id>
@@ -128,6 +131,7 @@ def update_province(province_id):
 @provinces_bp.route('/<int:province_id>', methods=['DELETE'])
 @jwt_required()
 @editor_or_admin_required()
+@audit_log('DELETE', 'province')
 def delete_province(province_id):
     """
     DELETE /provinces/<id>

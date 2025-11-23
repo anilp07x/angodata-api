@@ -145,33 +145,5 @@
     "capital": "Catete",
     "area_km2": 3800,
     "populacao": 180000
-  },
-  {
-    "id": 23,
-    "nome": "Província Teste",
-    "capital": "Capital Teste",
-    "area_km2": 1000.0,
-    "populacao": 50000
-  },
-  {
-    "id": 24,
-    "nome": "Província Teste",
-    "capital": "Capital Teste",
-    "area_km2": 1000.0,
-    "populacao": 50000
-  },
-  {
-    "id": 25,
-    "nome": "Província Teste",
-    "capital": "Capital Teste",
-    "area_km2": 1000.0,
-    "populacao": 50000
-  },
-  {
-    "id": 26,
-    "nome": "Província Admin",
-    "capital": "Capital Admin",
-    "area_km2": 2000.0,
-    "populacao": 10000
   }
 ]
