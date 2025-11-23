@@ -68,3 +68,7 @@ nohup: ignoring input
 127.0.0.1 - - [23/Nov/2025 12:37:17] "[31m[1mPOST /auth/login HTTP/1.1[0m" 401 -
 127.0.0.1 - - [23/Nov/2025 12:37:18] "[31m[1mPOST /auth/login HTTP/1.1[0m" 401 -
 127.0.0.1 - - [23/Nov/2025 12:37:19] "[31m[1mPOST /auth/login HTTP/1.1[0m" 429 -
+ * Detected change in '/home/server-dev/projects/angodata-api/src/utils/audit.py', reloading
+ * Restarting with stat
+ * Debugger is active!
+ * Debugger PIN: 109-639-286
