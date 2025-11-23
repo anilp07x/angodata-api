@@ -28,37 +28,37 @@ REST API desenvolvida em Flask que fornece dados públicos de Angola, incluindo 
 
 ## Status do Projeto
 
-### ✅ Fase 1 - CRUD Básico (Concluída)
+### Fase 1 - CRUD Básico (Concluída)
 - [x] Validação de dados com Marshmallow
 - [x] Endpoints POST, PUT, DELETE para todas as entidades
 - [x] Persistência em JSON
 - [x] Mensagens de erro em português
 
-### ✅ Fase 2 - Autenticação JWT (Concluída)
+### Fase 2 - Autenticação JWT (Concluída)
 - [x] Sistema de registro e login
 - [x] Geração e validação de tokens JWT
 - [x] Refresh tokens
 - [x] Hash de senhas com Bcrypt
 
-### ✅ Fase 3 - Autorização (Concluída)
+### Fase 3 - Autorização (Concluída)
 - [x] Decoradores de controle de acesso
 - [x] Sistema de roles (Admin, Editor, User)
 - [x] Proteção de endpoints por permissão
 
-### ✅ Fase 4 - Segurança Avançada (Concluída)
+### Fase 4 - Segurança Avançada (Concluída)
 - [x] Rate limiting (100 req/min por IP)
 - [x] Logs de auditoria completos
 - [x] Security headers (CSP, HSTS, X-Frame-Options)
 - [x] Validação contra XSS/SQL Injection
 
-### ✅ Fase 5 - Database PostgreSQL (Concluída)
+### Fase 5 - Database PostgreSQL (Concluída)
 - [x] Configuração SQLAlchemy + Alembic
 - [x] Models ORM para todas entidades
 - [x] Migrations automáticas
 - [x] Integração com Supabase (380 registros migrados)
 - [x] Service Factory Pattern (DB/JSON mode)
 
-### 🔄 Fase 6 - Funcionalidades Avançadas (80% Completo)
+### Fase 6 - Funcionalidades Avançadas (80% Completo)
 - [x] Paginação (LIMIT/OFFSET) com metadata completo
 - [x] Busca avançada (full-text search, sorting, filtering)
 - [x] Caching com Redis + SimpleCache
@@ -87,7 +87,7 @@ REST API desenvolvida em Flask que fornece dados públicos de Angola, incluindo 
 
 </div>
 
-## 🔧 Setup
+## Setup
 
 ### 1. Clonar repositório
 ```bash
@@ -141,7 +141,7 @@ python app.py
 
 API estará disponível em: `http://localhost:5000`
 
-## 📡 API Endpoints
+## API Endpoints
 
 ### Autenticação
 
@@ -197,7 +197,7 @@ Mesmos endpoints disponíveis para:
 - `/markets/*`
 - `/hospitals/*`
 
-## 🧪 Testes
+## Testes
 
 ```bash
 # Executar todos os testes
@@ -207,9 +207,9 @@ pytest tests/ -v
 pytest tests/ --cov=src --cov-report=html
 ```
 
-**Status**: ✅ 6 testes passando, 29% cobertura
+**Status**: 6 testes passando, 29% cobertura
 
-## ⚡ Performance
+## Performance
 
 ### Com cache ativo (Redis):
 - Primeiro request: ~50ms
@@ -219,32 +219,42 @@ pytest tests/ --cov=src --cov-report=html
 - Create 100 registros: ~200ms (vs 5000ms individual)
 - Update 100 registros: ~150ms (vs 4000ms individual)
 
-## 🔒 Segurança
+## Segurança
 
-- ✅ JWT Authentication
-- ✅ Role-based Authorization (Admin, Editor, Viewer)
-- ✅ Rate Limiting (100 req/min)
-- ✅ Audit Logging
-- ✅ Security Headers
-- ✅ Password hashing (bcrypt)
-- ✅ Input validation (Marshmallow)
+- JWT Authentication
+- Role-based Authorization (Admin, Editor, Viewer)
+- Rate Limiting (100 req/min)
+- Audit Logging
+- Security Headers
+- Password hashing (bcrypt)
+- Input validation (Marshmallow)
 
-## 📚 Documentação
+## Documentação
 
 - [PHASE6_ADVANCED_FEATURES.md](./PHASE6_ADVANCED_FEATURES.md) - Detalhes Fase 6
 - `.github/copilot-instructions.md` - Instruções para AI
 
-## 📝 Próximos Passos
+## Próximos Passos
 
 1. Replicar paginação/bulk/cache para outras entidades
 2. Configurar Swagger/OpenAPI
 3. Aumentar cobertura de testes para 80%+
 4. Documentação completa da API
 
-## 📄 Licença
+## Licença
 
 MIT License
 
 ---
 
-**Desenvolvido com ❤️ para Angola 🇦🇴**
+## Contato
+
+Desenvolvido por Anilson Pedro - [@anilp07x](https://github.com/anilp07x)
+
+---
+
+<div align="center">
+
+**AngoData API** - Dados públicos de Angola acessíveis via REST API
+
+</div>
