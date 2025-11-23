@@ -5,7 +5,7 @@ Blueprint que gerencia endpoints relacionados a municípios de Angola.
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
-from src.services.municipality_service import MunicipalityService
+from src.services.service_factory import ServiceFactory
 from src.schemas.municipality_schema import MunicipalitySchema
 from src.utils.decorators import editor_or_admin_required
 
@@ -23,6 +23,7 @@ def get_all_municipalities():
     Retorna todos os municípios de Angola.
     Aceita query parameter: ?provincia_id=<id>
     """
+    MunicipalityService = ServiceFactory.get_municipality_service()
     # Filtrar por província se fornecido
     provincia_id = request.args.get('provincia_id', type=int)
     
@@ -44,6 +45,7 @@ def get_municipality_by_id(municipality_id):
     GET /municipalities/<id>
     Retorna um município específico por ID.
     """
+    MunicipalityService = ServiceFactory.get_municipality_service()
     municipality = MunicipalityService.get_by_id(municipality_id)
     
     if municipality:
@@ -67,6 +69,7 @@ def create_municipality():
     Cria um novo município.
     Requer autenticação e role: admin ou editor
     """
+    MunicipalityService = ServiceFactory.get_municipality_service()
     try:
         data = municipality_schema.load(request.get_json())
         
@@ -106,6 +109,7 @@ def update_municipality(municipality_id):
     Atualiza um município existente.
     Requer autenticação e role: admin ou editor
     """
+    MunicipalityService = ServiceFactory.get_municipality_service()
     try:
         data = municipality_schema.load(request.get_json(), partial=True)
         
@@ -145,6 +149,7 @@ def delete_municipality(municipality_id):
     Deleta um município.
     Requer autenticação e role: admin ou editor
     """
+    MunicipalityService = ServiceFactory.get_municipality_service()
     try:
         # Verificar dependências
         deps = MunicipalityService.has_dependencies(municipality_id)

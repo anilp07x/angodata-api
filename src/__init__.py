@@ -28,7 +28,10 @@ def create_app(config_name='development'):
     # Carregar configurações baseadas no ambiente
     app.config.from_object(config_by_name[config_name])
     
-    # Carregar dados persistidos (se existirem)
+    # Inicializar database se USE_DATABASE=True
+    init_database_if_enabled(app)
+    
+    # Carregar dados persistidos (se existirem e USE_DATABASE=False)
     load_persisted_data()
     
     # Habilitar CORS (Cross-Origin Resource Sharing)
@@ -63,11 +66,45 @@ def create_app(config_name='development'):
     return app
 
 
+def init_database_if_enabled(app):
+    """
+    Inicializa conexão com banco de dados PostgreSQL se USE_DATABASE=True.
+    
+    Args:
+        app (Flask): Instância da aplicação Flask
+    """
+    import os
+    
+    # Verificar se deve usar banco de dados
+    use_database = os.getenv('USE_DATABASE', 'False').lower() == 'true'
+    
+    if use_database:
+        from src.database.base import init_database, close_database
+        
+        # Inicializar conexão com database
+        init_database()
+        print("✓ Database PostgreSQL inicializado com sucesso")
+        
+        # Registrar cleanup ao desligar app
+        @app.teardown_appcontext
+        def shutdown_session(exception=None):
+            close_database()
+
+
 def load_persisted_data():
     """
     Carrega dados persistidos de arquivos JSON.
     Se os arquivos não existirem, usa os dados hardcoded dos models.
+    Somente carrega se USE_DATABASE=False.
     """
+    import os
+    
+    # Não carregar JSON se estiver usando database
+    use_database = os.getenv('USE_DATABASE', 'False').lower() == 'true'
+    if use_database:
+        print("✓ Usando PostgreSQL Database - dados JSON ignorados")
+        return
+    
     from src.database.json_storage import JSONStorage
     from src.models import province, municipality, school, market, hospital, user
     

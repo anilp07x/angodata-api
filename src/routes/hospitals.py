@@ -5,7 +5,7 @@ Blueprint que gerencia endpoints relacionados a hospitais de Angola.
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
-from src.services.hospital_service import HospitalService
+from src.services.service_factory import ServiceFactory
 from src.schemas.hospital_schema import HospitalSchema
 from src.utils.decorators import editor_or_admin_required
 
@@ -23,6 +23,7 @@ def get_all_hospitals():
     Retorna todos os hospitais de Angola.
     Aceita query parameters: ?provincia_id=<id> ou ?municipio_id=<id>
     """
+    HospitalService = ServiceFactory.get_hospital_service()
     provincia_id = request.args.get('provincia_id', type=int)
     municipio_id = request.args.get('municipio_id', type=int)
     
@@ -46,6 +47,7 @@ def get_hospital_by_id(hospital_id):
     GET /hospitals/<id>
     Retorna um hospital específico por ID.
     """
+    HospitalService = ServiceFactory.get_hospital_service()
     hospital = HospitalService.get_by_id(hospital_id)
     
     if hospital:
@@ -69,6 +71,7 @@ def create_hospital():
     Cria um novo hospital.
     Requer autenticação e role: admin ou editor
     """
+    HospitalService = ServiceFactory.get_hospital_service()
     try:
         data = hospital_schema.load(request.get_json())
         
@@ -108,6 +111,7 @@ def update_hospital(hospital_id):
     Atualiza um hospital existente.
     Requer autenticação e role: admin ou editor
     """
+    HospitalService = ServiceFactory.get_hospital_service()
     try:
         data = hospital_schema.load(request.get_json(), partial=True)
         
@@ -147,6 +151,7 @@ def delete_hospital(hospital_id):
     Deleta um hospital.
     Requer autenticação e role: admin ou editor
     """
+    HospitalService = ServiceFactory.get_hospital_service()
     try:
         deleted = HospitalService.delete(hospital_id)
         

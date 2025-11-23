@@ -6,7 +6,7 @@ Blueprint que gerencia endpoints relacionados a províncias de Angola.
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
-from src.services.province_service import ProvinceService
+from src.services.service_factory import ServiceFactory
 from src.schemas.province_schema import ProvinceSchema
 from src.utils.decorators import editor_or_admin_required
 from src.utils.audit import audit_log
@@ -24,6 +24,7 @@ def get_all_provinces():
     GET /provinces/all
     Retorna todas as províncias de Angola.
     """
+    ProvinceService = ServiceFactory.get_province_service()
     provinces = ProvinceService.get_all()
     return jsonify({
         "success": True,
@@ -38,6 +39,7 @@ def get_province_by_id(province_id):
     GET /provinces/<id>
     Retorna uma província específica por ID.
     """
+    ProvinceService = ServiceFactory.get_province_service()
     province = ProvinceService.get_by_id(province_id)
     
     if province:
@@ -61,6 +63,7 @@ def create_province():
     POST /provinces
     Cria uma nova província.
     """
+    ProvinceService = ServiceFactory.get_province_service()
     try:
         # Validar dados de entrada
         data = province_schema.load(request.get_json())
@@ -96,6 +99,7 @@ def update_province(province_id):
     PUT /provinces/<id>
     Atualiza uma província existente.
     """
+    ProvinceService = ServiceFactory.get_province_service()
     try:
         # Validar dados de entrada (partial=True para permitir updates parciais)
         data = province_schema.load(request.get_json(), partial=True)
@@ -137,6 +141,7 @@ def delete_province(province_id):
     DELETE /provinces/<id>
     Deleta uma província.
     """
+    ProvinceService = ServiceFactory.get_province_service()
     try:
         # Verificar se tem municípios associados
         municipality_count = ProvinceService.has_municipalities(province_id)

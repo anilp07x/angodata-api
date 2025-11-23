@@ -5,7 +5,7 @@ Blueprint que gerencia endpoints relacionados a mercados de Angola.
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
-from src.services.market_service import MarketService
+from src.services.service_factory import ServiceFactory
 from src.schemas.market_schema import MarketSchema
 from src.utils.decorators import editor_or_admin_required
 
@@ -23,6 +23,7 @@ def get_all_markets():
     Retorna todos os mercados de Angola.
     Aceita query parameters: ?provincia_id=<id> ou ?municipio_id=<id>
     """
+    MarketService = ServiceFactory.get_market_service()
     provincia_id = request.args.get('provincia_id', type=int)
     municipio_id = request.args.get('municipio_id', type=int)
     
@@ -46,6 +47,7 @@ def get_market_by_id(market_id):
     GET /markets/<id>
     Retorna um mercado específico por ID.
     """
+    MarketService = ServiceFactory.get_market_service()
     market = MarketService.get_by_id(market_id)
     
     if market:
@@ -69,6 +71,7 @@ def create_market():
     Cria um novo mercado.
     Requer autenticação e role: admin ou editor
     """
+    MarketService = ServiceFactory.get_market_service()
     try:
         data = market_schema.load(request.get_json())
         
@@ -108,6 +111,7 @@ def update_market(market_id):
     Atualiza um mercado existente.
     Requer autenticação e role: admin ou editor
     """
+    MarketService = ServiceFactory.get_market_service()
     try:
         data = market_schema.load(request.get_json(), partial=True)
         
@@ -147,6 +151,7 @@ def delete_market(market_id):
     Deleta um mercado.
     Requer autenticação e role: admin ou editor
     """
+    MarketService = ServiceFactory.get_market_service()
     try:
         deleted = MarketService.delete(market_id)
         

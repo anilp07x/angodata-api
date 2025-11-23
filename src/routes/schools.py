@@ -5,7 +5,7 @@ Blueprint que gerencia endpoints relacionados a escolas de Angola.
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
-from src.services.school_service import SchoolService
+from src.services.service_factory import ServiceFactory
 from src.schemas.school_schema import SchoolSchema
 from src.utils.decorators import editor_or_admin_required
 
@@ -23,6 +23,7 @@ def get_all_schools():
     Retorna todas as escolas de Angola.
     Aceita query parameters: ?provincia_id=<id> ou ?municipio_id=<id>
     """
+    SchoolService = ServiceFactory.get_school_service()
     provincia_id = request.args.get('provincia_id', type=int)
     municipio_id = request.args.get('municipio_id', type=int)
     
@@ -46,6 +47,7 @@ def get_school_by_id(school_id):
     GET /schools/<id>
     Retorna uma escola específica por ID.
     """
+    SchoolService = ServiceFactory.get_school_service()
     school = SchoolService.get_by_id(school_id)
     
     if school:
@@ -69,6 +71,7 @@ def create_school():
     Cria uma nova escola.
     Requer autenticação e role: admin ou editor
     """
+    SchoolService = ServiceFactory.get_school_service()
     try:
         data = school_schema.load(request.get_json())
         
@@ -108,6 +111,7 @@ def update_school(school_id):
     Atualiza uma escola existente.
     Requer autenticação e role: admin ou editor
     """
+    SchoolService = ServiceFactory.get_school_service()
     try:
         data = school_schema.load(request.get_json(), partial=True)
         
@@ -147,6 +151,7 @@ def delete_school(school_id):
     Deleta uma escola.
     Requer autenticação e role: admin ou editor
     """
+    SchoolService = ServiceFactory.get_school_service()
     try:
         deleted = SchoolService.delete(school_id)
         
