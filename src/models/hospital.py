@@ -13,7 +13,7 @@ HOSPITALS = [
         "provincia_nome": "Luanda",
         "municipio_id": 9,
         "municipio": "Maianga",
-        "endereco": "Maianga"
+        "endereco": "Maianga",
     },
     {
         "id": 2,
@@ -24,7 +24,7 @@ HOSPITALS = [
         "provincia_nome": "Luanda",
         "municipio_id": 10,
         "municipio": "Samba",
-        "endereco": "Samba"
+        "endereco": "Samba",
     },
     {
         "id": 3,
@@ -35,7 +35,7 @@ HOSPITALS = [
         "provincia_nome": "Luanda",
         "municipio_id": 16,
         "municipio": "Talatona",
-        "endereco": "Talatona"
+        "endereco": "Talatona",
     },
     {
         "id": 4,
@@ -46,7 +46,7 @@ HOSPITALS = [
         "provincia_nome": "Bengo",
         "municipio_id": 18,
         "municipio": "Dande",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 5,
@@ -57,7 +57,7 @@ HOSPITALS = [
         "provincia_nome": "Benguela",
         "municipio_id": 38,
         "municipio": "Benguela",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 6,
@@ -68,7 +68,7 @@ HOSPITALS = [
         "provincia_nome": "Benguela",
         "municipio_id": 37,
         "municipio": "Lobito",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 7,
@@ -79,7 +79,7 @@ HOSPITALS = [
         "provincia_nome": "Huambo",
         "municipio_id": 162,
         "municipio": "Huambo",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 8,
@@ -90,7 +90,7 @@ HOSPITALS = [
         "provincia_nome": "Huíla",
         "municipio_id": 183,
         "municipio": "Lubango",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 9,
@@ -101,6 +101,6 @@ HOSPITALS = [
         "provincia_nome": "Luanda",
         "municipio_id": 8,
         "municipio": "Rangel",
-        "endereco": "Sambizanga"
-    }
+        "endereco": "Sambizanga",
+    },
 ]

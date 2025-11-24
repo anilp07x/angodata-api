@@ -21,7 +21,6 @@ MUNICIPALITIES = [
     {"id": 14, "nome": "Hoji Ya Henda", "provincia_id": 1, "provincia_nome": "Luanda"},
     {"id": 15, "nome": "Ingombota", "provincia_id": 1, "provincia_nome": "Luanda"},
     {"id": 16, "nome": "Talatona", "provincia_id": 1, "provincia_nome": "Luanda"},
-    
     # BENGO (12 municípios) - ID: 2
     {"id": 17, "nome": "Bula Atumba", "provincia_id": 2, "provincia_nome": "Bengo"},
     {"id": 18, "nome": "Dande", "provincia_id": 2, "provincia_nome": "Bengo"},
@@ -35,7 +34,6 @@ MUNICIPALITIES = [
     {"id": 26, "nome": "Úcua", "provincia_id": 2, "provincia_nome": "Bengo"},
     {"id": 27, "nome": "Panguila", "provincia_id": 2, "provincia_nome": "Bengo"},
     {"id": 28, "nome": "Barra do Dande", "provincia_id": 2, "provincia_nome": "Bengo"},
-    
     # BENGUELA (23 municípios) - ID: 3
     {"id": 29, "nome": "Baía Farta", "provincia_id": 3, "provincia_nome": "Benguela"},
     {"id": 30, "nome": "Balombo", "provincia_id": 3, "provincia_nome": "Benguela"},
@@ -60,7 +58,6 @@ MUNICIPALITIES = [
     {"id": 49, "nome": "Bolonguera", "provincia_id": 3, "provincia_nome": "Benguela"},
     {"id": 50, "nome": "Canhamela", "provincia_id": 3, "provincia_nome": "Benguela"},
     {"id": 51, "nome": "Navegantes", "provincia_id": 3, "provincia_nome": "Benguela"},
-    
     # BIÉ (19 municípios) - ID: 4
     {"id": 52, "nome": "Andulo", "provincia_id": 4, "provincia_nome": "Bié"},
     {"id": 53, "nome": "Camacupa", "provincia_id": 4, "provincia_nome": "Bié"},
@@ -81,7 +78,6 @@ MUNICIPALITIES = [
     {"id": 68, "nome": "Lúbia", "provincia_id": 4, "provincia_nome": "Bié"},
     {"id": 69, "nome": "Cambândua", "provincia_id": 4, "provincia_nome": "Bié"},
     {"id": 70, "nome": "Belo Horizonte", "provincia_id": 4, "provincia_nome": "Bié"},
-    
     # CABINDA (10 municípios) - ID: 5
     {"id": 71, "nome": "Belize", "provincia_id": 5, "provincia_nome": "Cabinda"},
     {"id": 72, "nome": "Buco-Zau", "provincia_id": 5, "provincia_nome": "Cabinda"},
@@ -93,7 +89,6 @@ MUNICIPALITIES = [
     {"id": 78, "nome": "Tando Zinze", "provincia_id": 5, "provincia_nome": "Cabinda"},
     {"id": 79, "nome": "Liambo", "provincia_id": 5, "provincia_nome": "Cabinda"},
     {"id": 80, "nome": "Ngoio", "provincia_id": 5, "provincia_nome": "Cabinda"},
-    
     # CUANDO (9 municípios) - ID: 6
     {"id": 81, "nome": "Cuito Cuanavale", "provincia_id": 6, "provincia_nome": "Cuando"},
     {"id": 82, "nome": "Dirico", "provincia_id": 6, "provincia_nome": "Cuando"},
@@ -104,7 +99,6 @@ MUNICIPALITIES = [
     {"id": 87, "nome": "Luiana", "provincia_id": 6, "provincia_nome": "Cuando"},
     {"id": 88, "nome": "Mucusso", "provincia_id": 6, "provincia_nome": "Cuando"},
     {"id": 89, "nome": "Luengue", "provincia_id": 6, "provincia_nome": "Cuando"},
-    
     # CUBANGO (11 municípios) - ID: 7
     {"id": 90, "nome": "Calai", "provincia_id": 7, "provincia_nome": "Cubango"},
     {"id": 91, "nome": "Cuangar", "provincia_id": 7, "provincia_nome": "Cubango"},
@@ -117,7 +111,6 @@ MUNICIPALITIES = [
     {"id": 98, "nome": "Savate", "provincia_id": 7, "provincia_nome": "Cubango"},
     {"id": 99, "nome": "Chinguanja", "provincia_id": 7, "provincia_nome": "Cubango"},
     {"id": 100, "nome": "Mavengue", "provincia_id": 7, "provincia_nome": "Cubango"},
-    
     # CUANZA NORTE (17 municípios) - ID: 8
     {"id": 101, "nome": "Ambaca", "provincia_id": 8, "provincia_nome": "Cuanza Norte"},
     {"id": 102, "nome": "Banga", "provincia_id": 8, "provincia_nome": "Cuanza Norte"},
@@ -136,7 +129,6 @@ MUNICIPALITIES = [
     {"id": 115, "nome": "Aldeia Nova", "provincia_id": 8, "provincia_nome": "Cuanza Norte"},
     {"id": 116, "nome": "Caculo Cabaça", "provincia_id": 8, "provincia_nome": "Cuanza Norte"},
     {"id": 117, "nome": "Luinga", "provincia_id": 8, "provincia_nome": "Cuanza Norte"},
-    
     # CUANZA SUL (24 municípios) - ID: 9
     {"id": 118, "nome": "Gabela", "provincia_id": 9, "provincia_nome": "Cuanza Sul"},
     {"id": 119, "nome": "Cassongue", "provincia_id": 9, "provincia_nome": "Cuanza Sul"},
@@ -162,7 +154,6 @@ MUNICIPALITIES = [
     {"id": 139, "nome": "Lonhe", "provincia_id": 9, "provincia_nome": "Cuanza Sul"},
     {"id": 140, "nome": "Quenha", "provincia_id": 9, "provincia_nome": "Cuanza Sul"},
     {"id": 141, "nome": "Boa Entrada", "provincia_id": 9, "provincia_nome": "Cuanza Sul"},
-    
     # CUNENE (14 municípios) - ID: 10
     {"id": 142, "nome": "Cahama", "provincia_id": 10, "provincia_nome": "Cunene"},
     {"id": 143, "nome": "Cuanhama", "provincia_id": 10, "provincia_nome": "Cunene"},
@@ -178,7 +169,6 @@ MUNICIPALITIES = [
     {"id": 153, "nome": "Chitado", "provincia_id": 10, "provincia_nome": "Cunene"},
     {"id": 154, "nome": "Cafima", "provincia_id": 10, "provincia_nome": "Cunene"},
     {"id": 155, "nome": "Chissuata", "provincia_id": 10, "provincia_nome": "Cunene"},
-    
     # HUAMBO (17 municípios) - ID: 11
     {"id": 156, "nome": "Bailundo", "provincia_id": 11, "provincia_nome": "Huambo"},
     {"id": 157, "nome": "Caála", "provincia_id": 11, "provincia_nome": "Huambo"},
@@ -197,7 +187,6 @@ MUNICIPALITIES = [
     {"id": 170, "nome": "Alto Hama", "provincia_id": 11, "provincia_nome": "Huambo"},
     {"id": 171, "nome": "Chilata", "provincia_id": 11, "provincia_nome": "Huambo"},
     {"id": 172, "nome": "Cuima", "provincia_id": 11, "provincia_nome": "Huambo"},
-    
     # HUÍLA (24 municípios) - ID: 12
     {"id": 173, "nome": "Caconda", "provincia_id": 12, "provincia_nome": "Huíla"},
     {"id": 174, "nome": "Cacula", "provincia_id": 12, "provincia_nome": "Huíla"},
@@ -223,7 +212,6 @@ MUNICIPALITIES = [
     {"id": 194, "nome": "Galangue", "provincia_id": 12, "provincia_nome": "Huíla"},
     {"id": 195, "nome": "Palanca", "provincia_id": 12, "provincia_nome": "Huíla"},
     {"id": 196, "nome": "Chicungo", "provincia_id": 12, "provincia_nome": "Huíla"},
-    
     # LUNDA NORTE (19 municípios) - ID: 13
     {"id": 197, "nome": "Cambulo", "provincia_id": 13, "provincia_nome": "Lunda Norte"},
     {"id": 198, "nome": "Capenda Camulemba", "provincia_id": 13, "provincia_nome": "Lunda Norte"},
@@ -244,7 +232,6 @@ MUNICIPALITIES = [
     {"id": 213, "nome": "Cassanje Calucala", "provincia_id": 13, "provincia_nome": "Lunda Norte"},
     {"id": 214, "nome": "Mussungue", "provincia_id": 13, "provincia_nome": "Lunda Norte"},
     {"id": 215, "nome": "Cafunfu", "provincia_id": 13, "provincia_nome": "Lunda Norte"},
-    
     # LUNDA SUL (14 municípios) - ID: 14
     {"id": 216, "nome": "Cacolo", "provincia_id": 14, "provincia_nome": "Lunda Sul"},
     {"id": 217, "nome": "Dala", "provincia_id": 14, "provincia_nome": "Lunda Sul"},
@@ -260,7 +247,6 @@ MUNICIPALITIES = [
     {"id": 227, "nome": "Cazage", "provincia_id": 14, "provincia_nome": "Lunda Sul"},
     {"id": 228, "nome": "Muangueji", "provincia_id": 14, "provincia_nome": "Lunda Sul"},
     {"id": 229, "nome": "Cassengo", "provincia_id": 14, "provincia_nome": "Lunda Sul"},
-    
     # MALANJE (27 municípios) - ID: 15
     {"id": 230, "nome": "Cacuso", "provincia_id": 15, "provincia_nome": "Malanje"},
     {"id": 231, "nome": "Cahombo", "provincia_id": 15, "provincia_nome": "Malanje"},
@@ -289,7 +275,6 @@ MUNICIPALITIES = [
     {"id": 254, "nome": "Quêssua", "provincia_id": 15, "provincia_nome": "Malanje"},
     {"id": 255, "nome": "Caculama", "provincia_id": 15, "provincia_nome": "Malanje"},
     {"id": 256, "nome": "Mbanji Ya Ngola", "provincia_id": 15, "provincia_nome": "Malanje"},
-    
     # MOXICO (11 municípios) - ID: 16
     {"id": 257, "nome": "Chiúme", "provincia_id": 16, "provincia_nome": "Moxico"},
     {"id": 258, "nome": "Lumbala Nguimbo", "provincia_id": 16, "provincia_nome": "Moxico"},
@@ -302,7 +287,6 @@ MUNICIPALITIES = [
     {"id": 265, "nome": "Lucusse", "provincia_id": 16, "provincia_nome": "Moxico"},
     {"id": 266, "nome": "Ninda", "provincia_id": 16, "provincia_nome": "Moxico"},
     {"id": 267, "nome": "Lutuai", "provincia_id": 16, "provincia_nome": "Moxico"},
-    
     # MOXICO LESTE (9 municípios) - ID: 17
     {"id": 268, "nome": "Cazombo", "provincia_id": 17, "provincia_nome": "Moxico Leste"},
     {"id": 269, "nome": "Luacano", "provincia_id": 17, "provincia_nome": "Moxico Leste"},
@@ -313,7 +297,6 @@ MUNICIPALITIES = [
     {"id": 274, "nome": "Caianda", "provincia_id": 17, "provincia_nome": "Moxico Leste"},
     {"id": 275, "nome": "Lóvua do Zambeze", "provincia_id": 17, "provincia_nome": "Moxico Leste"},
     {"id": 276, "nome": "Lago Dilolo", "provincia_id": 17, "provincia_nome": "Moxico Leste"},
-    
     # NAMIBE (9 municípios) - ID: 18
     {"id": 277, "nome": "Moçâmedes", "provincia_id": 18, "provincia_nome": "Namibe"},
     {"id": 278, "nome": "Camucuio", "provincia_id": 18, "provincia_nome": "Namibe"},
@@ -324,7 +307,6 @@ MUNICIPALITIES = [
     {"id": 283, "nome": "Iona", "provincia_id": 18, "provincia_nome": "Namibe"},
     {"id": 284, "nome": "Sacomar", "provincia_id": 18, "provincia_nome": "Namibe"},
     {"id": 285, "nome": "Cacimbas", "provincia_id": 18, "provincia_nome": "Namibe"},
-    
     # UÍGE (23 municípios) - ID: 19
     {"id": 286, "nome": "Uíge", "provincia_id": 19, "provincia_nome": "Uíge"},
     {"id": 287, "nome": "Cangola", "provincia_id": 19, "provincia_nome": "Uíge"},
@@ -349,7 +331,6 @@ MUNICIPALITIES = [
     {"id": 306, "nome": "Massau", "provincia_id": 19, "provincia_nome": "Uíge"},
     {"id": 307, "nome": "Vista Alegre", "provincia_id": 19, "provincia_nome": "Uíge"},
     {"id": 308, "nome": "Alto Zaza", "provincia_id": 19, "provincia_nome": "Uíge"},
-    
     # ZAIRE (11 municípios) - ID: 20
     {"id": 309, "nome": "Mbanza Kongo", "provincia_id": 20, "provincia_nome": "Zaire"},
     {"id": 310, "nome": "Soyo", "provincia_id": 20, "provincia_nome": "Zaire"},
@@ -362,7 +343,6 @@ MUNICIPALITIES = [
     {"id": 317, "nome": "Quêlo", "provincia_id": 20, "provincia_nome": "Zaire"},
     {"id": 318, "nome": "Serra de Canda", "provincia_id": 20, "provincia_nome": "Zaire"},
     {"id": 319, "nome": "Quindeje", "provincia_id": 20, "provincia_nome": "Zaire"},
-    
     # ICOLO E BENGO (7 municípios) - ID: 21
     {"id": 320, "nome": "Catete", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"},
     {"id": 321, "nome": "Quiçama", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"},
@@ -370,5 +350,5 @@ MUNICIPALITIES = [
     {"id": 323, "nome": "Cabiri", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"},
     {"id": 324, "nome": "Cabo Ledo", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"},
     {"id": 325, "nome": "Bom Jesus", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"},
-    {"id": 326, "nome": "Sequele", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"}
+    {"id": 326, "nome": "Sequele", "provincia_id": 21, "provincia_nome": "Icolo e Bengo"},
 ]

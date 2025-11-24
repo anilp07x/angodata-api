@@ -12,7 +12,7 @@ MARKETS = [
         "provincia_nome": "Luanda",
         "municipio_id": 2,
         "municipio": "Cacuaco",
-        "especialidade": "Diversos"
+        "especialidade": "Diversos",
     },
     {
         "id": 2,
@@ -22,7 +22,7 @@ MARKETS = [
         "provincia_nome": "Luanda",
         "municipio_id": 9,
         "municipio": "Maianga",
-        "especialidade": "Alimentação"
+        "especialidade": "Alimentação",
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@ MARKETS = [
         "provincia_nome": "Luanda",
         "municipio_id": 3,
         "municipio": "Cazenga",
-        "especialidade": "Diversos"
+        "especialidade": "Diversos",
     },
     {
         "id": 4,
@@ -42,7 +42,7 @@ MARKETS = [
         "provincia_nome": "Benguela",
         "municipio_id": 33,
         "municipio": "Catumbela",
-        "especialidade": "Alimentação"
+        "especialidade": "Alimentação",
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@ MARKETS = [
         "provincia_nome": "Benguela",
         "municipio_id": 37,
         "municipio": "Lobito",
-        "especialidade": "Diversos"
+        "especialidade": "Diversos",
     },
     {
         "id": 6,
@@ -62,7 +62,7 @@ MARKETS = [
         "provincia_nome": "Huambo",
         "municipio_id": 162,
         "municipio": "Huambo",
-        "especialidade": "Alimentação e Artesanato"
+        "especialidade": "Alimentação e Artesanato",
     },
     {
         "id": 7,
@@ -72,6 +72,6 @@ MARKETS = [
         "provincia_nome": "Huíla",
         "municipio_id": 183,
         "municipio": "Lubango",
-        "especialidade": "Diversos"
-    }
+        "especialidade": "Diversos",
+    },
 ]

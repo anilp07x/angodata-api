@@ -12,7 +12,7 @@ SCHOOLS = [
         "provincia_nome": "Luanda",
         "municipio_id": 9,
         "municipio": "Maianga",
-        "endereco": "Maianga"
+        "endereco": "Maianga",
     },
     {
         "id": 2,
@@ -22,7 +22,7 @@ SCHOOLS = [
         "provincia_nome": "Luanda",
         "municipio_id": 16,
         "municipio": "Talatona",
-        "endereco": "Talatona"
+        "endereco": "Talatona",
     },
     {
         "id": 3,
@@ -32,7 +32,7 @@ SCHOOLS = [
         "provincia_nome": "Luanda",
         "municipio_id": 3,
         "municipio": "Cazenga",
-        "endereco": "Hoji Ya Henda"
+        "endereco": "Hoji Ya Henda",
     },
     {
         "id": 4,
@@ -42,7 +42,7 @@ SCHOOLS = [
         "provincia_nome": "Benguela",
         "municipio_id": 38,
         "municipio": "Benguela",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 5,
@@ -52,7 +52,7 @@ SCHOOLS = [
         "provincia_nome": "Benguela",
         "municipio_id": 37,
         "municipio": "Lobito",
-        "endereco": "Compão"
+        "endereco": "Compão",
     },
     {
         "id": 6,
@@ -62,7 +62,7 @@ SCHOOLS = [
         "provincia_nome": "Huambo",
         "municipio_id": 162,
         "municipio": "Huambo",
-        "endereco": "Centro"
+        "endereco": "Centro",
     },
     {
         "id": 7,
@@ -72,7 +72,7 @@ SCHOOLS = [
         "provincia_nome": "Huíla",
         "municipio_id": 183,
         "municipio": "Lubango",
-        "endereco": "Tchivinguiro"
+        "endereco": "Tchivinguiro",
     },
     {
         "id": 8,
@@ -82,6 +82,6 @@ SCHOOLS = [
         "provincia_nome": "Huíla",
         "municipio_id": 183,
         "municipio": "Lubango",
-        "endereco": "Tchioco"
-    }
+        "endereco": "Tchioco",
+    },
 ]

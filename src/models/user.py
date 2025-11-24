@@ -7,8 +7,4 @@ Gerencia autenticação e autorização.
 USERS = []
 
 # Roles disponíveis no sistema
-ROLES = {
-    'admin': 'Administrador - acesso total',
-    'editor': 'Editor - pode criar e editar',
-    'user': 'Usuário - apenas leitura'
-}
+ROLES = {"admin": "Administrador - acesso total", "editor": "Editor - pode criar e editar", "user": "Usuário - apenas leitura"}

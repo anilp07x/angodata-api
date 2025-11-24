@@ -2,60 +2,50 @@
 Schema de validação para Mercado
 """
 
-from marshmallow import Schema, fields, validates, ValidationError
+from marshmallow import Schema, ValidationError, fields, validates
 
 
 class MarketSchema(Schema):
     """Schema para validação de dados de mercado"""
-    
+
     id = fields.Int(dump_only=True)
-    nome = fields.Str(required=True, error_messages={
-        'required': 'Campo obrigatório: nome'
-    })
-    tipo = fields.Str(required=True, error_messages={
-        'required': 'Campo obrigatório: tipo'
-    })
-    provincia_id = fields.Int(required=True, error_messages={
-        'required': 'Campo obrigatório: provincia_id'
-    })
+    nome = fields.Str(required=True, error_messages={"required": "Campo obrigatório: nome"})
+    tipo = fields.Str(required=True, error_messages={"required": "Campo obrigatório: tipo"})
+    provincia_id = fields.Int(required=True, error_messages={"required": "Campo obrigatório: provincia_id"})
     provincia_nome = fields.Str(dump_only=True)
-    municipio_id = fields.Int(required=True, error_messages={
-        'required': 'Campo obrigatório: municipio_id'
-    })
+    municipio_id = fields.Int(required=True, error_messages={"required": "Campo obrigatório: municipio_id"})
     municipio = fields.Str(dump_only=True)
-    especialidade = fields.Str(required=True, error_messages={
-        'required': 'Campo obrigatório: especialidade'
-    })
-    
-    @validates('nome')
+    especialidade = fields.Str(required=True, error_messages={"required": "Campo obrigatório: especialidade"})
+
+    @validates("nome")
     def validate_nome(self, value):
         """Valida o nome do mercado"""
         if not value or len(value.strip()) == 0:
-            raise ValidationError('Nome não pode estar vazio')
+            raise ValidationError("Nome não pode estar vazio")
         if len(value) > 200:
-            raise ValidationError('Nome deve ter no máximo 200 caracteres')
-    
-    @validates('tipo')
+            raise ValidationError("Nome deve ter no máximo 200 caracteres")
+
+    @validates("tipo")
     def validate_tipo(self, value):
         """Valida o tipo do mercado"""
-        tipos_validos = ['Formal', 'Informal']
+        tipos_validos = ["Formal", "Informal"]
         if value not in tipos_validos:
             raise ValidationError(f'Tipo deve ser um dos seguintes: {", ".join(tipos_validos)}')
-    
-    @validates('provincia_id')
+
+    @validates("provincia_id")
     def validate_provincia_id(self, value):
         """Valida o ID da província"""
         if value <= 0:
-            raise ValidationError('ID da província deve ser um valor positivo')
-    
-    @validates('municipio_id')
+            raise ValidationError("ID da província deve ser um valor positivo")
+
+    @validates("municipio_id")
     def validate_municipio_id(self, value):
         """Valida o ID do município"""
         if value <= 0:
-            raise ValidationError('ID do município deve ser um valor positivo')
-    
-    @validates('especialidade')
+            raise ValidationError("ID do município deve ser um valor positivo")
+
+    @validates("especialidade")
     def validate_especialidade(self, value):
         """Valida a especialidade"""
         if not value or len(value.strip()) == 0:
-            raise ValidationError('Especialidade não pode estar vazia')
+            raise ValidationError("Especialidade não pode estar vazia")

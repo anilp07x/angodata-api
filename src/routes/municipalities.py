@@ -5,18 +5,19 @@ Blueprint que gerencia endpoints relacionados a municípios de Angola.
 from flask import Blueprint, jsonify, request
 from flask_jwt_extended import jwt_required
 from marshmallow import ValidationError
-from src.services.service_factory import ServiceFactory
+
 from src.schemas.municipality_schema import MunicipalitySchema
+from src.services.service_factory import ServiceFactory
 from src.utils.decorators import editor_or_admin_required
 
 # Criação do Blueprint para municípios
-municipalities_bp = Blueprint('municipalities', __name__, url_prefix='/municipalities')
+municipalities_bp = Blueprint("municipalities", __name__, url_prefix="/municipalities")
 
 # Instância do schema
 municipality_schema = MunicipalitySchema()
 
 
-@municipalities_bp.route('/all', methods=['GET'])
+@municipalities_bp.route("/all", methods=["GET"])
 def get_all_municipalities():
     """
     GET /municipalities/all
@@ -25,21 +26,17 @@ def get_all_municipalities():
     """
     MunicipalityService = ServiceFactory.get_municipality_service()
     # Filtrar por província se fornecido
-    provincia_id = request.args.get('provincia_id', type=int)
-    
+    provincia_id = request.args.get("provincia_id", type=int)
+
     if provincia_id:
         municipalities = MunicipalityService.get_by_province(provincia_id)
     else:
         municipalities = MunicipalityService.get_all()
-    
-    return jsonify({
-        "success": True,
-        "total": len(municipalities),
-        "data": municipalities
-    }), 200
+
+    return jsonify({"success": True, "total": len(municipalities), "data": municipalities}), 200
 
 
-@municipalities_bp.route('/<int:municipality_id>', methods=['GET'])
+@municipalities_bp.route("/<int:municipality_id>", methods=["GET"])
 def get_municipality_by_id(municipality_id):
     """
     GET /municipalities/<id>
@@ -47,20 +44,14 @@ def get_municipality_by_id(municipality_id):
     """
     MunicipalityService = ServiceFactory.get_municipality_service()
     municipality = MunicipalityService.get_by_id(municipality_id)
-    
+
     if municipality:
-        return jsonify({
-            "success": True,
-            "data": municipality
-        }), 200
+        return jsonify({"success": True, "data": municipality}), 200
     else:
-        return jsonify({
-            "success": False,
-            "message": f"Município com ID {municipality_id} não encontrado"
-        }), 404
+        return jsonify({"success": False, "message": f"Município com ID {municipality_id} não encontrado"}), 404
 
 
-@municipalities_bp.route('', methods=['POST'])
+@municipalities_bp.route("", methods=["POST"])
 @jwt_required()
 @editor_or_admin_required()
 def create_municipality():
@@ -72,35 +63,21 @@ def create_municipality():
     MunicipalityService = ServiceFactory.get_municipality_service()
     try:
         data = municipality_schema.load(request.get_json())
-        
+
         new_municipality = MunicipalityService.create(data)
-        
+
         if new_municipality:
-            return jsonify({
-                "success": True,
-                "message": "Município criado com sucesso",
-                "data": new_municipality
-            }), 201
+            return jsonify({"success": True, "message": "Município criado com sucesso", "data": new_municipality}), 201
         else:
-            return jsonify({
-                "success": False,
-                "message": "ID da província inválido"
-            }), 400
-            
+            return jsonify({"success": False, "message": "ID da província inválido"}), 400
+
     except ValidationError as err:
-        return jsonify({
-            "success": False,
-            "message": "Erro de validação",
-            "errors": err.messages
-        }), 422
+        return jsonify({"success": False, "message": "Erro de validação", "errors": err.messages}), 422
     except Exception as e:
-        return jsonify({
-            "success": False,
-            "message": f"Erro ao criar município: {str(e)}"
-        }), 500
+        return jsonify({"success": False, "message": f"Erro ao criar município: {str(e)}"}), 500
 
 
-@municipalities_bp.route('/<int:municipality_id>', methods=['PUT'])
+@municipalities_bp.route("/<int:municipality_id>", methods=["PUT"])
 @jwt_required()
 @editor_or_admin_required()
 def update_municipality(municipality_id):
@@ -112,35 +89,21 @@ def update_municipality(municipality_id):
     MunicipalityService = ServiceFactory.get_municipality_service()
     try:
         data = municipality_schema.load(request.get_json(), partial=True)
-        
+
         updated_municipality = MunicipalityService.update(municipality_id, data)
-        
+
         if updated_municipality:
-            return jsonify({
-                "success": True,
-                "message": "Município atualizado com sucesso",
-                "data": updated_municipality
-            }), 200
+            return jsonify({"success": True, "message": "Município atualizado com sucesso", "data": updated_municipality}), 200
         else:
-            return jsonify({
-                "success": False,
-                "message": "Município não encontrado ou ID da província inválido"
-            }), 404
-            
+            return jsonify({"success": False, "message": "Município não encontrado ou ID da província inválido"}), 404
+
     except ValidationError as err:
-        return jsonify({
-            "success": False,
-            "message": "Erro de validação",
-            "errors": err.messages
-        }), 422
+        return jsonify({"success": False, "message": "Erro de validação", "errors": err.messages}), 422
     except Exception as e:
-        return jsonify({
-            "success": False,
-            "message": f"Erro ao atualizar município: {str(e)}"
-        }), 500
+        return jsonify({"success": False, "message": f"Erro ao atualizar município: {str(e)}"}), 500
 
 
-@municipalities_bp.route('/<int:municipality_id>', methods=['DELETE'])
+@municipalities_bp.route("/<int:municipality_id>", methods=["DELETE"])
 @jwt_required()
 @editor_or_admin_required()
 def delete_municipality(municipality_id):
@@ -153,29 +116,25 @@ def delete_municipality(municipality_id):
     try:
         # Verificar dependências
         deps = MunicipalityService.has_dependencies(municipality_id)
-        
-        if deps['total'] > 0:
-            return jsonify({
-                "success": False,
-                "message": "Não é possível deletar município. Existem dependências (escolas/mercados/hospitais)",
-                "dependencies": deps
-            }), 400
-        
+
+        if deps["total"] > 0:
+            return (
+                jsonify(
+                    {
+                        "success": False,
+                        "message": "Não é possível deletar município. Existem dependências (escolas/mercados/hospitais)",
+                        "dependencies": deps,
+                    }
+                ),
+                400,
+            )
+
         deleted = MunicipalityService.delete(municipality_id)
-        
+
         if deleted:
-            return jsonify({
-                "success": True,
-                "message": "Município deletado com sucesso"
-            }), 200
+            return jsonify({"success": True, "message": "Município deletado com sucesso"}), 200
         else:
-            return jsonify({
-                "success": False,
-                "message": f"Município com ID {municipality_id} não encontrado"
-            }), 404
-            
+            return jsonify({"success": False, "message": f"Município com ID {municipality_id} não encontrado"}), 404
+
     except Exception as e:
-        return jsonify({
-            "success": False,
-            "message": f"Erro ao deletar município: {str(e)}"
-        }), 500
+        return jsonify({"success": False, "message": f"Erro ao deletar município: {str(e)}"}), 500
