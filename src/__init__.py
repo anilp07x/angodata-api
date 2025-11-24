@@ -11,6 +11,7 @@ from flask_limiter.util import get_remote_address
 from src.config.config import config_by_name
 from src.utils.security import add_security_headers
 from src.utils.cache import init_cache
+from src.swagger import api, init_swagger
 
 
 def create_app(config_name='development'):
@@ -54,6 +55,9 @@ def create_app(config_name='development'):
     
     # Inicializar Cache (Redis ou Memory)
     init_cache(app)
+    
+    # Inicializar Swagger/OpenAPI
+    init_swagger(app)
     
     # Adicionar security headers a todas as respostas
     app.after_request(add_security_headers)

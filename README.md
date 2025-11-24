@@ -58,13 +58,13 @@ REST API desenvolvida em Flask que fornece dados públicos de Angola, incluindo 
 - [x] Integração com Supabase (380 registros migrados)
 - [x] Service Factory Pattern (DB/JSON mode)
 
-### Fase 6 - Funcionalidades Avançadas (80% Completo)
+### Fase 6 - Funcionalidades Avançadas (100% Completo)
 - [x] Paginação (LIMIT/OFFSET) com metadata completo
 - [x] Busca avançada (full-text search, sorting, filtering)
 - [x] Caching com Redis + SimpleCache
 - [x] Bulk operations (create/update/delete em lote)
 - [x] Testes unitários e integração (6 testes, 29% cobertura)
-- [ ] OpenAPI/Swagger (pacotes instalados, configuração pendente)
+- [x] OpenAPI/Swagger UI disponível em `/api/docs`
 - [ ] Replicar features para outras entidades
 
 ## Tecnologias Utilizadas
@@ -231,15 +231,22 @@ pytest tests/ --cov=src --cov-report=html
 
 ## Documentação
 
+- [SWAGGER_DOCS.md](./SWAGGER_DOCS.md) - Documentação Swagger/OpenAPI
 - [PHASE6_ADVANCED_FEATURES.md](./PHASE6_ADVANCED_FEATURES.md) - Detalhes Fase 6
 - `.github/copilot-instructions.md` - Instruções para AI
 
+### API Interativa
+
+A documentação interativa da API está disponível em:
+- **Swagger UI**: http://localhost:5001/api/docs
+- **OpenAPI Spec**: http://localhost:5001/api/swagger.json
+
 ## Próximos Passos
 
-1. Replicar paginação/bulk/cache para outras entidades
-2. Configurar Swagger/OpenAPI
-3. Aumentar cobertura de testes para 80%+
-4. Documentação completa da API
+1. Replicar paginação/bulk/cache para outras entidades (municipalities, schools, markets, hospitals)
+2. Aumentar cobertura de testes para 80%+
+3. Adicionar mais endpoints ao Swagger (auth, outras entidades)
+4. Implementar filtros avançados e ordenação em todas as entidades
 
 ## Licença
 
