@@ -3,7 +3,7 @@ Pacote principal da AngoData API.
 Contém a função factory para criar e configurar a aplicação Flask.
 """
 
-from flask import Flask, jsonify
+from flask import Flask, jsonify, redirect, url_for
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
@@ -175,23 +175,7 @@ def register_home_route(app):
         GET /
         Endpoint principal que retorna informações sobre a API.
         """
-        return (
-            jsonify(
-                {
-                    "message": "AngoData API a funcionar!",
-                    "version": "1.0.0",
-                    "endpoints": {
-                        "provinces": "/provinces/all, /provinces/<id>",
-                        "municipalities": "/municipalities/all, /municipalities/<id>",
-                        "schools": "/schools/all, /schools/<id>",
-                        "markets": "/markets/all, /markets/<id>",
-                        "hospitals": "/hospitals/all, /hospitals/<id>",
-                        "auth": "/auth/register, /auth/login, /auth/refresh, /auth/me, /auth/users",
-                    },
-                }
-            ),
-            200,
-        )
+        return redirect("/api/docs", code=302)
 
 
 def configure_jwt_handlers(jwt):
