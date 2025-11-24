@@ -123,7 +123,9 @@ class SecurityValidator:
                     (
                         cls.sanitize_string(item)
                         if isinstance(item, str)
-                        else cls.sanitize_dict(item) if isinstance(item, dict) else item
+                        else cls.sanitize_dict(item)
+                        if isinstance(item, dict)
+                        else item
                     )
                     for item in value
                 ]
