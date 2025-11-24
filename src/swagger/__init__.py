@@ -76,6 +76,9 @@ from src.swagger.hospitals_ns import hospitals_ns
 from src.swagger import auth_resources
 from src.swagger import provinces_resources
 from src.swagger import municipalities_resources
+from src.swagger import schools_resources
+from src.swagger import markets_resources
+from src.swagger import hospitals_resources
 
 # Registrar namespaces
 api.add_namespace(auth_ns, path='/auth')
