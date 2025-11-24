@@ -213,6 +213,8 @@ def add_security_headers(response):
     Returns:
         response: Resposta com headers de segurança adicionados
     """
+    from flask import request
+    
     # Prevenir clickjacking
     response.headers['X-Frame-Options'] = 'DENY'
     
@@ -222,8 +224,19 @@ def add_security_headers(response):
     # XSS Protection (legacy, mas ainda útil)
     response.headers['X-XSS-Protection'] = '1; mode=block'
     
-    # Content Security Policy
-    response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
+    # Content Security Policy - Relaxar para Swagger UI
+    if request.path.startswith('/api/docs') or request.path.startswith('/swaggerui'):
+        # Swagger UI precisa de 'unsafe-inline' e 'unsafe-eval' para JavaScript
+        response.headers['Content-Security-Policy'] = (
+            "default-src 'self'; "
+            "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "
+            "style-src 'self' 'unsafe-inline'; "
+            "img-src 'self' data:; "
+            "font-src 'self' data:"
+        )
+    else:
+        # CSP restritivo para outras rotas
+        response.headers['Content-Security-Policy'] = "default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'"
     
     # Strict Transport Security (HSTS) - apenas em produção com HTTPS
     # response.headers['Strict-Transport-Security'] = 'max-age=31536000; includeSubDomains'

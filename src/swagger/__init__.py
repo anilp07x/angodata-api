@@ -5,21 +5,21 @@ Configuração Swagger/OpenAPI com flask-restx.
 from flask_restx import Api
 from flask import Blueprint
 
-# Criar blueprint para API
-api_bp = Blueprint('api', __name__, url_prefix='/api')
+# Criar blueprint para API (SEM url_prefix aqui)
+api_bp = Blueprint('api', __name__)
 
 # Configuração da API com metadados
 api = Api(
     api_bp,
-    version='1.0',
+    version='1.0.0',
     title='AngoData API',
     description='''
 REST API que fornece dados públicos de Angola.
 
 ## Recursos Disponíveis
 
-- **Províncias**: 18 províncias de Angola
-- **Municípios**: 164 municípios
+- **Províncias**: 21 províncias de Angola
+- **Municípios**: 326 municípios
 - **Escolas**: Instituições de ensino
 - **Mercados**: Mercados públicos
 - **Hospitais**: Unidades de saúde
@@ -59,7 +59,7 @@ Exemplo: `/provinces/all?page=1&per_page=20&sort_by=nome&order=asc&search=Luanda
     },
     security='Bearer',
     contact='Anilson Pedro',
-    contact_email='anilp07x@github.com',
+    contact_email='anilpedro07x@outlook.com',
     license='MIT',
     ordered=True
 )
@@ -93,5 +93,5 @@ def init_swagger(app):
     Args:
         app: Instância Flask
     """
-    app.register_blueprint(api_bp)
+    app.register_blueprint(api_bp, url_prefix='/api')
     print("✓ Swagger/OpenAPI inicializado em /api/docs")
