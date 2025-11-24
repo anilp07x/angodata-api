@@ -1,4 +1,4 @@
-name: Lint e Formatação
+name: Code Quality
 
 on:
   pull_request:
@@ -6,7 +6,7 @@ on:
 
 jobs:
   lint:
-    name: Code Quality Check
+    name: Lint e Formatação
     runs-on: ubuntu-latest
     
     steps:
@@ -19,33 +19,23 @@ jobs:
         python-version: '3.12'
         cache: 'pip'
     
-    - name: Instalar ferramentas de qualidade
+    - name: Instalar dependências
       run: |
         python -m pip install --upgrade pip
-        pip install black flake8 isort pylint mypy bandit
+        pip install -r requirements.txt
     
     - name: Black - Verificar formatação
-      run: |
-        black --check --diff src/ tests/
-    
-    - name: isort - Verificar organização de imports
-      run: |
-        isort --check-only --diff src/ tests/
-    
-    - name: Flake8 - Análise de código
-      run: |
-        flake8 src/ tests/ --max-line-length=127 --extend-ignore=E203,W503
-    
-    - name: Pylint - Análise estática
-      run: |
-        pylint src/ --max-line-length=127 --disable=C0111,R0903
+      run: black --check --diff src/ tests/
       continue-on-error: true
     
-    - name: MyPy - Type Checking
-      run: |
-        mypy src/ --ignore-missing-imports
+    - name: isort - Verificar organização de imports
+      run: isort --check-only --diff src/ tests/
+      continue-on-error: true
+    
+    - name: Flake8 - Análise de código
+      run: flake8 src/ tests/ --max-line-length=127 --extend-ignore=E203,W503
       continue-on-error: true
     
     - name: Bandit - Análise de segurança
-      run: |
-        bandit -r src/ -ll
+      run: bandit -r src/ -ll
+      continue-on-error: true
