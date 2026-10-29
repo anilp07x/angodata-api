@@ -5,10 +5,11 @@ Provides database-backed operations for schools.
 
 from typing import Any, Dict, List, Optional
 
-from sqlalchemy.exc import SQLAlchemyError
+from sqlalchemy.orm import joinedload
 
 from src.database.base import get_db_session
 from src.database.models import School
+from src.services.db.common import resolve_location
 
 
 class SchoolServiceDB:
@@ -16,178 +17,138 @@ class SchoolServiceDB:
 
     @staticmethod
     def get_all() -> List[Dict[str, Any]]:
-        """
-        Get all schools from database.
-
-        Returns:
-            List[Dict]: List of all schools with their data
-        """
-        try:
-            with get_db_session() as session:
-                schools = session.query(School).order_by(School.nome).all()
-                return [school.to_dict() for school in schools]
-        except SQLAlchemyError as e:
-            print(f"Database error getting all schools: {e}")
-            return []
+        """Get all schools from database."""
+        with get_db_session() as session:
+            schools = (
+                session.query(School)
+                .options(joinedload(School.province), joinedload(School.municipality))
+                .order_by(School.nome)
+                .all()
+            )
+            return [school.to_dict() for school in schools]
 
     @staticmethod
     def get_by_id(school_id: int) -> Optional[Dict[str, Any]]:
-        """
-        Get a specific school by ID.
-
-        Args:
-            school_id: The ID of the school to retrieve
-
-        Returns:
-            Dict or None: School data if found, None otherwise
-        """
-        try:
-            with get_db_session() as session:
-                school = session.query(School).filter(School.id == school_id).first()
-                return school.to_dict() if school else None
-        except SQLAlchemyError as e:
-            print(f"Database error getting school {school_id}: {e}")
-            return None
+        """Get a specific school by ID."""
+        with get_db_session() as session:
+            school = (
+                session.query(School)
+                .options(joinedload(School.province), joinedload(School.municipality))
+                .filter(School.id == school_id)
+                .first()
+            )
+            return school.to_dict() if school else None
 
     @staticmethod
     def get_by_province(province_id: int) -> List[Dict[str, Any]]:
-        """
-        Get all schools for a specific province.
-
-        Args:
-            province_id: ID of the province
-
-        Returns:
-            List[Dict]: List of schools in the province
-        """
-        try:
-            with get_db_session() as session:
-                schools = session.query(School).filter(School.provincia_id == province_id).order_by(School.nome).all()
-                return [school.to_dict() for school in schools]
-        except SQLAlchemyError as e:
-            print(f"Database error getting schools for province {province_id}: {e}")
-            return []
+        """Get all schools for a specific province."""
+        with get_db_session() as session:
+            schools = (
+                session.query(School)
+                .options(joinedload(School.province), joinedload(School.municipality))
+                .filter(School.provincia_id == province_id)
+                .order_by(School.nome)
+                .all()
+            )
+            return [school.to_dict() for school in schools]
 
     @staticmethod
-    def get_by_municipality(municipio_nome: str) -> List[Dict[str, Any]]:
-        """
-        Get all schools for a specific municipality.
-
-        Args:
-            municipio_nome: Name of the municipality
-
-        Returns:
-            List[Dict]: List of schools in the municipality
-        """
-        try:
-            with get_db_session() as session:
-                schools = session.query(School).filter(School.municipio == municipio_nome).order_by(School.nome).all()
-                return [school.to_dict() for school in schools]
-        except SQLAlchemyError as e:
-            print(f"Database error getting schools for municipality '{municipio_nome}': {e}")
-            return []
+    def get_by_municipality(municipio_id: int) -> List[Dict[str, Any]]:
+        """Get all schools for a specific municipality (by municipality ID)."""
+        with get_db_session() as session:
+            schools = (
+                session.query(School)
+                .options(joinedload(School.province), joinedload(School.municipality))
+                .filter(School.municipio_id == int(municipio_id))
+                .order_by(School.nome)
+                .all()
+            )
+            return [school.to_dict() for school in schools]
 
     @staticmethod
     def create(data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        """
-        Create a new school.
+        """Create a new school (validates province/municipality relationship)."""
+        with get_db_session() as session:
+            location = resolve_location(
+                session, data["provincia_id"], data.get("municipio_id")
+            )
+            if not location:
+                return None
 
-        Args:
-            data: School data (nome, provincia_id, municipio, tipo, nivel)
-
-        Returns:
-            Dict or None: Created school data if successful, None otherwise
-        """
-        try:
-            with get_db_session() as session:
-                school = School(
-                    nome=data["nome"],
-                    provincia_id=data["provincia_id"],
-                    municipio=data.get("municipio"),
-                    tipo=data.get("tipo"),
-                    nivel=data.get("nivel"),
-                )
-                session.add(school)
-                session.flush()
-                result = school.to_dict()
-                return result
-        except SQLAlchemyError as e:
-            print(f"Database error creating school: {e}")
-            return None
+            provincia_nome, municipio_id, municipio_nome = location
+            school = School(
+                nome=data["nome"],
+                tipo=data.get("tipo"),
+                provincia_id=data["provincia_id"],
+                municipio_id=municipio_id,
+                municipio=municipio_nome,
+                nivel=data.get("nivel"),
+                endereco=data.get("endereco"),
+            )
+            session.add(school)
+            session.flush()
+            result = school.to_dict()  # attached: lazy relationships available
+            result["provincia_nome"] = provincia_nome
+            return result
 
     @staticmethod
     def update(school_id: int, data: Dict[str, Any]) -> Optional[Dict[str, Any]]:
-        """
-        Update an existing school.
+        """Update an existing school (validates province/municipality relationship)."""
+        with get_db_session() as session:
+            school = (
+                session.query(School)
+                .options(joinedload(School.province), joinedload(School.municipality))
+                .filter(School.id == school_id)
+                .first()
+            )
 
-        Args:
-            school_id: ID of the school to update
-            data: Updated school data
+            if not school:
+                return None
 
-        Returns:
-            Dict or None: Updated school data if successful, None otherwise
-        """
-        try:
-            with get_db_session() as session:
-                school = session.query(School).filter(School.id == school_id).first()
+            # Atualizar província/município (validar antes de mutar o modelo)
+            location = None
+            if "provincia_id" in data or "municipio_id" in data:
+                provincia_id = data.get("provincia_id", school.provincia_id)
+                municipio_id = data.get("municipio_id", school.municipio_id)
 
-                if not school:
+                location = resolve_location(session, provincia_id, municipio_id)
+                if not location:
                     return None
 
-                # Update fields if provided
-                if "nome" in data:
-                    school.nome = data["nome"]
-                if "provincia_id" in data:
-                    school.provincia_id = data["provincia_id"]
-                if "municipio" in data:
-                    school.municipio = data["municipio"]
-                if "tipo" in data:
-                    school.tipo = data["tipo"]
-                if "nivel" in data:
-                    school.nivel = data["nivel"]
+                provincia_nome, municipio_id, municipio_nome = location
+                school.provincia_id = provincia_id
+                school.municipio_id = municipio_id
+                school.municipio = municipio_nome
 
-                session.flush()
-                result = school.to_dict()
-                return result
-        except SQLAlchemyError as e:
-            print(f"Database error updating school {school_id}: {e}")
-            return None
+            if "nome" in data:
+                school.nome = data["nome"]
+            if "tipo" in data:
+                school.tipo = data["tipo"]
+            if "nivel" in data:
+                school.nivel = data["nivel"]
+            if "endereco" in data:
+                school.endereco = data["endereco"]
+
+            session.flush()
+            result = school.to_dict()
+            if "provincia_id" in data or "municipio_id" in data:
+                result["provincia_nome"] = provincia_nome
+            return result
 
     @staticmethod
     def delete(school_id: int) -> bool:
-        """
-        Delete a school by ID.
+        """Delete a school by ID."""
+        with get_db_session() as session:
+            school = session.query(School).filter(School.id == school_id).first()
 
-        Args:
-            school_id: ID of the school to delete
+            if not school:
+                return False
 
-        Returns:
-            bool: True if deleted, False otherwise
-        """
-        try:
-            with get_db_session() as session:
-                school = session.query(School).filter(School.id == school_id).first()
-
-                if not school:
-                    return False
-
-                session.delete(school)
-                return True
-        except SQLAlchemyError as e:
-            print(f"Database error deleting school {school_id}: {e}")
-            return False
+            session.delete(school)
+            return True
 
     @staticmethod
     def count() -> int:
-        """
-        Get total count of schools.
-
-        Returns:
-            int: Total number of schools
-        """
-        try:
-            with get_db_session() as session:
-                return session.query(School).count()
-        except SQLAlchemyError as e:
-            print(f"Database error counting schools: {e}")
-            return 0
+        """Get total count of schools."""
+        with get_db_session() as session:
+            return session.query(School).count()

@@ -3,7 +3,9 @@ Pacote principal da AngoData API.
 Contém a função factory para criar e configurar a aplicação Flask.
 """
 
-from flask import Flask, jsonify, redirect, url_for
+import os
+
+from flask import Flask, jsonify, redirect, request
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
 from flask_limiter import Limiter
@@ -13,6 +15,15 @@ from src.config.config import config_by_name
 from src.swagger import api, init_swagger
 from src.utils.cache import init_cache
 from src.utils.security import add_security_headers
+
+# Rate limiter compartilhado (configurado via init_app em create_app)
+limiter = Limiter(
+    key_func=get_remote_address,
+    default_limits=[
+        s.strip() for s in os.getenv("RATELIMIT_DEFAULT", "200 per day;50 per hour").split(";") if s.strip()
+    ],
+    storage_uri=os.getenv("RATELIMIT_STORAGE_URL", "memory://"),
+)
 
 
 def create_app(config_name="development"):
@@ -25,11 +36,21 @@ def create_app(config_name="development"):
     Returns:
         Flask: Instância configurada da aplicação Flask
     """
-    # Criar instância do Flask
+    import os
+
     app = Flask(__name__)
 
     # Carregar configurações baseadas no ambiente
     app.config.from_object(config_by_name[config_name])
+
+    # Em produção, segredos DEVEM vir do ambiente
+    if config_name == "production":
+        missing = [k for k in ("SECRET_KEY", "JWT_SECRET_KEY") if not os.getenv(k)]
+        if missing:
+            raise RuntimeError(
+                "Variáveis de ambiente ausentes em produção: "
+                + ", ".join(missing)
+            )
 
     # Inicializar database se USE_DATABASE=True
     init_database_if_enabled(app)
@@ -38,13 +59,17 @@ def create_app(config_name="development"):
     load_persisted_data()
 
     # Habilitar CORS (Cross-Origin Resource Sharing)
-    # Permite que a API seja acessada de diferentes domínios
-    CORS(app)
-
-    # Configurar Rate Limiting
-    limiter = Limiter(
-        app=app, key_func=get_remote_address, default_limits=["200 per day", "50 per hour"], storage_uri="memory://"
+    # Restringe por ALLOWED_ORIGINS quando definido
+    allowed_origins = os.getenv("ALLOWED_ORIGINS", "").strip()
+    cors_origins = (
+        [o.strip() for o in allowed_origins.split(",") if o.strip()]
+        if allowed_origins
+        else []
     )
+    CORS(app, origins=cors_origins if cors_origins else "*", supports_credentials=False)
+
+    # Configurar Rate Limiting (valores definidos na construção do limiter)
+    limiter.init_app(app)
     app.limiter = limiter
 
     # Configurar JWT
@@ -66,6 +91,9 @@ def create_app(config_name="development"):
     # Registrar rota principal
     register_home_route(app)
 
+    # Registrar health check
+    register_health_route(app)
+
     # Registrar manipuladores de erros
     register_error_handlers(app)
 
@@ -85,16 +113,19 @@ def init_database_if_enabled(app):
     use_database = os.getenv("USE_DATABASE", "False").lower() == "true"
 
     if use_database:
-        from src.database.base import close_database, init_database
+        from src.database.base import init_database
 
         # Inicializar conexão com database
         init_database()
         print("✓ Database PostgreSQL inicializado com sucesso")
 
-        # Registrar cleanup ao desligar app
+        # Encerrar a scoped session no fim de cada request (o engine/pool vive com o app)
         @app.teardown_appcontext
         def shutdown_session(exception=None):
-            close_database()
+            from src.database.base import SessionLocal
+
+            if SessionLocal is not None:
+                SessionLocal.remove()
 
 
 def load_persisted_data():
@@ -176,6 +207,40 @@ def register_home_route(app):
         Endpoint principal que retorna informações sobre a API.
         """
         return redirect("/api/docs", code=302)
+
+
+def register_health_route(app):
+    """
+    Registra a rota de health check para monitoramento (Render usa /health).
+    """
+
+    @app.route("/health", methods=["GET"])
+    def health():
+        """
+        GET /health
+        Verifica o estado da aplicação e da conexão com o banco.
+        """
+        import os
+
+        payload = {"status": "ok", "database": "disabled"}
+        use_database = os.getenv("USE_DATABASE", "False").lower() == "true"
+
+        if use_database:
+            try:
+                from sqlalchemy import text
+
+                from src.database.base import engine
+
+                with engine.connect() as conn:
+                    conn.execute(text("SELECT 1"))
+                payload["database"] = "connected"
+            except Exception as exc:  # noqa: BLE001
+                payload["status"] = "degraded"
+                payload["database"] = "error"
+                payload["database_error"] = str(exc)
+                return jsonify(payload), 503
+
+        return jsonify(payload), 200
 
 
 def configure_jwt_handlers(jwt):

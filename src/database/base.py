@@ -33,8 +33,9 @@ def init_database():
     engine = create_engine(
         database_url,
         pool_pre_ping=True,  # Verify connections before using
-        pool_size=10,  # Number of connections to maintain
-        max_overflow=20,  # Max additional connections
+        pool_size=5,  # Number of connections to maintain
+        max_overflow=5,  # Max additional connections
+        pool_recycle=1800,  # Recycle connections (Supabase pooler friendly)
         echo=False,  # Set to True for SQL logging during debug
     )
 

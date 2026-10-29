@@ -3,13 +3,16 @@ Rotas para autenticação e autorização.
 Blueprint que gerencia registro, login e gestão de usuários.
 """
 
-from flask import Blueprint, current_app, jsonify, request
+import os
+
+from flask import Blueprint, jsonify, request
 from flask_jwt_extended import create_access_token, create_refresh_token, get_jwt, get_jwt_identity, jwt_required
 from marshmallow import ValidationError
 
+from src import limiter
 from src.schemas.user_schema import UserLoginSchema, UserRegistrationSchema, UserResponseSchema
-from src.services.auth_service import AuthService
-from src.utils.audit import AuditLogger, audit_log
+from src.services.service_factory import ServiceFactory
+from src.utils.audit import AuditLogger
 from src.utils.decorators import admin_required
 
 # Criação do Blueprint para autenticação
@@ -30,15 +33,16 @@ def register():
     try:
         data = registration_schema.load(request.get_json())
 
-        new_user = AuthService.register(data)
+        new_user = ServiceFactory.get_auth_service().register(data)
+        auth_service = ServiceFactory.get_auth_service()
 
         if new_user:
             return jsonify({"success": True, "message": "Usuário registrado com sucesso", "data": new_user}), 201
         else:
             # Verificar qual campo está duplicado
-            if AuthService.get_user_by_email(data["email"]):
+            if auth_service.get_user_by_email(data["email"]):
                 return jsonify({"success": False, "message": "Email já está em uso"}), 400
-            elif AuthService.get_user_by_username(data["username"]):
+            elif auth_service.get_user_by_username(data["username"]):
                 return jsonify({"success": False, "message": "Username já está em uso"}), 400
             else:
                 return jsonify({"success": False, "message": "Erro ao registrar usuário"}), 400
@@ -50,19 +54,17 @@ def register():
 
 
 @auth_bp.route("/login", methods=["POST"])
+@limiter.limit(os.getenv("RATELIMIT_LOGIN", "5 per minute"))
 def login():
     """
     POST /auth/login
     Autentica um usuário e retorna tokens JWT.
-    Rate limit: 5 tentativas por minuto
+    Rate limit: RATELIMIT_LOGIN (default 5 tentativas por minuto)
     """
-    limiter = current_app.limiter
-    limiter.limit("5 per minute")(lambda: None)()
-
     try:
         data = login_schema.load(request.get_json())
 
-        user = AuthService.authenticate(data["email"], data["password"])
+        user = ServiceFactory.get_auth_service().authenticate(data["email"], data["password"])
 
         if user:
             # Registrar login bem-sucedido no audit log
@@ -113,7 +115,8 @@ def refresh():
     """
     try:
         current_user_id = get_jwt_identity()
-        user = AuthService.get_user_by_id(current_user_id)
+        auth_service = ServiceFactory.get_auth_service()
+        user = auth_service.get_user_by_id(current_user_id)
 
         if user:
             # Criar novo access token
@@ -139,7 +142,8 @@ def get_current_user():
     """
     try:
         current_user_id = get_jwt_identity()
-        user = AuthService.get_user_by_id(current_user_id)
+        auth_service = ServiceFactory.get_auth_service()
+        user = auth_service.get_user_by_id(current_user_id)
 
         if user:
             return jsonify({"success": True, "data": user}), 200
@@ -163,7 +167,7 @@ def get_all_users():
         if claims.get("role") != "admin":
             return jsonify({"success": False, "message": "Acesso negado. Permissões insuficientes"}), 403
 
-        users = AuthService.get_all_users()
+        users = ServiceFactory.get_auth_service().get_all_users()
 
         return jsonify({"success": True, "total": len(users), "data": users}), 200
 

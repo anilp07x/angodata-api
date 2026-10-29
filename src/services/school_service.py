@@ -61,6 +61,7 @@ class SchoolService:
         return [s for s in SCHOOLS if s.get("municipio_id") == municipality_id]
 
     @staticmethod
+    @persist_data
     def create(data):
         """
         Cria uma nova escola.

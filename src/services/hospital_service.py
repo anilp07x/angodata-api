@@ -61,6 +61,7 @@ class HospitalService:
         return [h for h in HOSPITALS if h.get("municipio_id") == municipality_id]
 
     @staticmethod
+    @persist_data
     def create(data):
         """
         Cria um novo hospital.

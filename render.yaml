@@ -1,0 +1,35 @@
+services:
+  - type: web
+    name: angodata-api
+    runtime: python
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: alembic upgrade head && gunicorn -w 2 -k gthread --threads 4 --timeout 60 -b 0.0.0.0:$PORT app:app
+    healthCheckPath: /health
+    envVars:
+      - key: FLASK_ENV
+        value: production
+      - key: USE_DATABASE
+        value: "true"
+      - key: USE_REDIS
+        value: "false"
+      - key: SECRET_KEY
+        sync: false
+      - key: JWT_SECRET_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
+      - key: ALLOWED_ORIGINS
+        sync: false
+      - key: RATELIMIT_STORAGE_URL
+        value: memory://
+      - key: RATELIMIT_DEFAULT
+        value: 200 per day;50 per hour
+      - key: RATELIMIT_LOGIN
+        value: 5 per minute
+      - key: FORCE_HTTPS
+        value: "false"
+      - key: ENABLE_AUDIT_LOG
+        value: "true"
+      - key: PYTHON_VERSION
+        value: "3.13.0"

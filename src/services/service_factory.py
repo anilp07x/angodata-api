@@ -116,13 +116,30 @@ class ServiceFactory:
         Get User service (DB or JSON).
 
         Returns:
-            UserService: Either UserServiceDB or UserService (from auth)
+            UserService: Either UserServiceDB or the JSON AuthService
         """
         if ServiceFactory._use_database():
             from src.services.db.user_service_db import UserServiceDB
 
             return UserServiceDB
         else:
-            from src.auth.user_service import UserService
+            from src.services.auth_service import AuthService
 
-            return UserService
+            return AuthService
+
+    @staticmethod
+    def get_auth_service() -> Any:
+        """
+        Get Auth service (DB or JSON).
+
+        Returns:
+            AuthService: Either AuthServiceDB or the JSON AuthService
+        """
+        if ServiceFactory._use_database():
+            from src.services.db.auth_service_db import AuthServiceDB
+
+            return AuthServiceDB
+        else:
+            from src.services.auth_service import AuthService
+
+            return AuthService

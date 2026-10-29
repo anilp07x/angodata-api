@@ -61,6 +61,7 @@ class MarketService:
         return [m for m in MARKETS if m.get("municipio_id") == municipality_id]
 
     @staticmethod
+    @persist_data
     def create(data):
         """
         Cria um novo mercado.

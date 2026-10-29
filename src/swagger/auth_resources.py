@@ -8,7 +8,7 @@ from flask_jwt_extended import get_jwt_identity, jwt_required
 from flask_restx import Resource
 from marshmallow import ValidationError
 
-from src.services.auth_service import AuthService
+from src.services.service_factory import ServiceFactory
 from src.swagger.auth_ns import (
     auth_ns,
     change_password_model,
@@ -35,16 +35,24 @@ class LoginResource(Resource):
         if not data or "email" not in data or "password" not in data:
             return {"success": False, "message": "Email e senha são obrigatórios"}, 400
 
-        user = AuthService.authenticate(data["email"], data["password"])
+        user = ServiceFactory.get_auth_service().authenticate(data["email"], data["password"])
 
         if not user:
             return {"success": False, "message": "Credenciais inválidas"}, 401
 
-        from flask_jwt_extended import create_access_token
+        from flask_jwt_extended import create_access_token, create_refresh_token
 
-        access_token = create_access_token(identity=user["id"])
+        access_token = create_access_token(
+            identity=str(user["id"]),
+            additional_claims={
+                "email": user["email"],
+                "username": user["username"],
+                "role": user["role"],
+            },
+        )
+        refresh_token = create_refresh_token(identity=str(user["id"]))
 
-        return {"access_token": access_token, "user": user}, 200
+        return {"access_token": access_token, "refresh_token": refresh_token, "user": user}, 200
 
 
 @auth_ns.route("/register")
@@ -67,7 +75,7 @@ class RegisterResource(Resource):
             "role": data.get("role", "user"),
         }
 
-        user = AuthService.register(user_data)
+        user = ServiceFactory.get_auth_service().register(user_data)
 
         if not user:
             return {"success": False, "message": "Email ou nome de usuário já existe"}, 400
@@ -85,7 +93,7 @@ class MeResource(Resource):
     def get(self):
         """Retorna informações do usuário autenticado"""
         user_id = get_jwt_identity()
-        user = AuthService.get_user_by_id(user_id)
+        user = ServiceFactory.get_auth_service().get_user_by_id(user_id)
 
         if not user:
             return {"success": False, "message": "Usuário não encontrado"}, 404
@@ -98,18 +106,25 @@ class RefreshResource(Resource):
     @auth_ns.doc("refresh_token", security="Bearer")
     @auth_ns.response(200, "Token renovado", token_response)
     @auth_ns.response(401, "Token inválido", error_response)
-    @jwt_required()
+    @jwt_required(refresh=True)
     def post(self):
         """Renova o token JWT (refresh token)"""
         user_id = get_jwt_identity()
-        user = AuthService.get_user_by_id(user_id)
+        user = ServiceFactory.get_auth_service().get_user_by_id(user_id)
 
         if not user:
             return {"success": False, "message": "Usuário não encontrado"}, 401
 
-        from flask_jwt_extended import create_access_token
+        from flask_jwt_extended import create_access_token, get_jwt
 
-        access_token = create_access_token(identity=user["id"])
+        access_token = create_access_token(
+            identity=str(user["id"]),
+            additional_claims={
+                "email": user["email"],
+                "username": user["username"],
+                "role": user["role"],
+            },
+        )
 
         return {"access_token": access_token, "user": user}, 200
 
@@ -130,20 +145,21 @@ class ChangePasswordResource(Resource):
         if not data or "current_password" not in data or "new_password" not in data:
             return {"success": False, "message": "Senha atual e nova senha são obrigatórias"}, 400
 
-        user = AuthService.get_user_by_id(user_id)
+        auth_service = ServiceFactory.get_auth_service()
+        user = auth_service.get_user_by_id(user_id)
         if not user:
             return {"success": False, "message": "Usuário não encontrado"}, 401
 
         # Verificar senha atual
-        full_user = AuthService.get_user_by_email(user["email"])
+        full_user = auth_service.get_user_by_email(user["email"])
         if not full_user:
             return {"success": False, "message": "Usuário não encontrado"}, 401
 
-        if not AuthService.verify_password(full_user["password_hash"], data["current_password"]):
+        if not auth_service.verify_password(full_user["password_hash"], data["current_password"]):
             return {"success": False, "message": "Senha atual incorreta"}, 401
 
         # Atualizar senha
-        updated = AuthService.update_user(user_id, {"password": data["new_password"]})
+        updated = auth_service.update_user(user_id, {"password": data["new_password"]})
 
         if not updated:
             return {"success": False, "message": "Erro ao atualizar senha"}, 400
@@ -160,6 +176,12 @@ class UserListResource(Resource):
     @jwt_required()
     def get(self):
         """Lista todos os usuários (apenas Admin)"""
-        users = AuthService.get_all_users()
+        from flask_jwt_extended import get_jwt
+
+        claims = get_jwt()
+        if claims.get("role") != "admin":
+            return {"success": False, "message": "Acesso negado. Permissões insuficientes"}, 403
+
+        users = ServiceFactory.get_auth_service().get_all_users()
 
         return {"success": True, "total": len(users), "data": users}, 200

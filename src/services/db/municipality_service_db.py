@@ -8,6 +8,8 @@ from typing import Any, Dict, List, Optional
 from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
+from sqlalchemy.orm import joinedload
+
 from src.database.base import get_db_session
 from src.database.models import Hospital, Market, Municipality, School
 
@@ -25,7 +27,13 @@ class MunicipalityServiceDB:
         """
         try:
             with get_db_session() as session:
-                municipalities = session.query(Municipality).order_by(Municipality.nome).all()
+                municipalities = (
+                    session.query(Municipality)
+                    .options(joinedload(Municipality.province))
+                    .options(joinedload(Municipality.province))
+                    .order_by(Municipality.nome)
+                    .all()
+                )
                 return [municipality.to_dict() for municipality in municipalities]
         except SQLAlchemyError as e:
             print(f"Database error getting all municipalities: {e}")
@@ -44,7 +52,13 @@ class MunicipalityServiceDB:
         """
         try:
             with get_db_session() as session:
-                municipality = session.query(Municipality).filter(Municipality.id == municipality_id).first()
+                municipality = (
+                    session.query(Municipality)
+                    .options(joinedload(Municipality.province))
+                    .options(joinedload(Municipality.province))
+                    .filter(Municipality.id == municipality_id)
+                    .first()
+                )
                 return municipality.to_dict() if municipality else None
         except SQLAlchemyError as e:
             print(f"Database error getting municipality {municipality_id}: {e}")
@@ -65,6 +79,7 @@ class MunicipalityServiceDB:
             with get_db_session() as session:
                 municipalities = (
                     session.query(Municipality)
+                    .options(joinedload(Municipality.province))
                     .filter(Municipality.provincia_id == province_id)
                     .order_by(Municipality.nome)
                     .all()
@@ -196,11 +211,11 @@ class MunicipalityServiceDB:
                     return {"schools": 0, "markets": 0, "hospitals": 0, "total": 0}
 
                 # Count dependencies by municipio name
-                schools_count = session.query(School).filter(School.municipio == municipality.nome).count()
+                schools_count = session.query(School).filter(School.municipio_id == municipality.id).count()
 
-                markets_count = session.query(Market).filter(Market.municipio == municipality.nome).count()
+                markets_count = session.query(Market).filter(Market.municipio_id == municipality.id).count()
 
-                hospitals_count = session.query(Hospital).filter(Hospital.municipio == municipality.nome).count()
+                hospitals_count = session.query(Hospital).filter(Hospital.municipio_id == municipality.id).count()
 
                 return {
                     "schools": schools_count,
