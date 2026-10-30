@@ -1,5 +1,5 @@
 """
-Página de documentação customizada (Swagger UI, tema Angola).
+Página de documentação customizada (Swagger UI, tema claro Angola).
 
 Single-file HTML servido em /api/docs; carrega swagger-ui-dist via CDN
 e consome o schema OpenAPI em /api/swagger.json.
@@ -32,10 +32,6 @@ CSS = """
   --agd-bg:#f6f4f2; --agd-surface:#ffffff; --agd-text:#232022;
   --agd-border:#e6e0da; --agd-muted:#6f6862;
 }
-html.dark{
-  --agd-bg:#141214; --agd-surface:#1e1b1d; --agd-text:#f2ede9;
-  --agd-border:#2e2a2c; --agd-muted:#a89f99;
-}
 body{ margin:0; background:var(--agd-bg); color:var(--agd-text);
   font-family:'Segoe UI',system-ui,-apple-system,sans-serif; }
 #agd-topbar{ position:sticky; top:0; z-index:50; background:var(--agd-black);
@@ -48,11 +44,11 @@ body{ margin:0; background:var(--agd-bg); color:var(--agd-text);
 #agd-topbar .badge{ background:var(--agd-red); color:#fff; border-radius:12px;
   padding:2px 10px; font-size:.72rem; font-weight:700; }
 #agd-topbar .actions{ display:flex; gap:10px; align-items:center; }
-#agd-topbar a, #agd-topbar button{
+#agd-topbar a{
   background:transparent; border:1px solid #554a4d; color:#fff; font:inherit;
   padding:6px 12px; border-radius:8px; cursor:pointer; text-decoration:none;
   font-size:.8rem; transition:all .15s ease; }
-#agd-topbar a:hover, #agd-topbar button:hover{ border-color:var(--agd-yellow); color:var(--agd-yellow); }
+#agd-topbar a:hover{ border-color:var(--agd-yellow); color:var(--agd-yellow); }
 #swagger-ui{ min-height:calc(100vh - 64px) }
 .swagger-ui .info .title{ color:var(--agd-text) !important }
 .swagger-ui .info p, .swagger-ui .info li{ color:var(--agd-text) }
@@ -84,26 +80,14 @@ body{ margin:0; background:var(--agd-bg); color:var(--agd-text);
 
 TEMPLATE = (
     DOCTYPE
-    + """<html lang="pt" data-color-scheme="light">
+    + """<html lang="pt">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>AngoData API — Documentação</title>
-  <meta name="color-scheme" content="light dark">
   <link rel="icon" href="__FAVICON__">
   <link rel="stylesheet" href="__BASE__/swagger-ui.css">
   <style>__CSS__</style>
-  <script>
-    (function() {
-      try {
-        var saved = localStorage.getItem('agd-theme');
-        if (saved === 'dark' ||
-            (!saved && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-          document.documentElement.classList.add('dark');
-        }
-      } catch (e) {}
-    })();
-  </script>
 </head>
 <body>
   <header id="agd-topbar">
@@ -117,30 +101,12 @@ TEMPLATE = (
     </div>
     <div class="actions">
       <a href="/api/swagger.json" target="_blank" rel="noopener">OpenAPI JSON</a>
-      <button type="button" id="agd-theme-toggle" title="Tema claro/escuro">Theme</button>
     </div>
   </header>
   <div id="swagger-ui"></div>
   <script src="__BASE__/swagger-ui-bundle.js" crossorigin="anonymous"></script>
   <script>
     window.addEventListener('load', function() {
-      var btn = document.getElementById('agd-theme-toggle');
-      var mode = 'light';
-      function apply(m) {
-        document.documentElement.classList.remove('dark');
-        if (m === 'dark') { document.documentElement.classList.add('dark'); }
-        try { localStorage.setItem('agd-theme', m); } catch (e) {}
-        btn.textContent = m === 'dark' ? 'Dark' : 'Light';
-        mode = m;
-      }
-      var pref = null;
-      try { pref = localStorage.getItem('agd-theme'); } catch (e) {}
-      if (pref !== 'light' && pref !== 'dark') {
-        pref = (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) ? 'dark' : 'light';
-      }
-      apply(pref);
-      btn.addEventListener('click', function() { apply(mode === 'dark' ? 'light' : 'dark'); });
-
       if (typeof SwaggerUIBundle === 'undefined') {
         document.getElementById('swagger-ui').innerHTML =
           '<div style="padding:24px">Falha ao carregar swagger-ui-dist do CDN.</div>';
