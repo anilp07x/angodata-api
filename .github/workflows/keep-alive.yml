@@ -1,0 +1,43 @@
+name: Keep Alive (Render ping)
+
+# Mantém o serviço free do Render acordado (hiberna após ~15 min sem tráfego).
+# Também evita a pausa do Supabase por inatividade (o /health faz SELECT 1).
+
+on:
+  schedule:
+    - cron: "*/10 * * * *" # a cada 10 minutos
+  workflow_dispatch: # permite rodar manualmente na aba Actions
+
+# Evita picos de execuções acumuladas
+concurrency:
+  group: keep-alive
+  cancel-in-progress: false
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Ping /health
+        env:
+          # Opcional: configure o secret RENDER_HEALTH_URL para outro URL;
+          # por padrão usa o endpoint de produção.
+          HEALTH_URL: ${{ secrets.RENDER_HEALTH_URL || 'https://angodata-api.onrender.com/health' }}
+        run: |
+          ok=0
+          for i in 1 2 3 4; do
+            code=$(curl -s -o /tmp/health.json -w "%{http_code}" -m 60 "$HEALTH_URL" || echo 000)
+            echo "tentativa $i -> HTTP $code"
+            if [ "$code" = "200" ]; then
+              ok=1
+              break
+            fi
+            # Após hibernar, o primeiro request pode dar 502 enquanto o container acorda
+            sleep 20
+          done
+          if [ "$ok" = "1" ]; then
+            echo "OK: $(cat /tmp/health.json)"
+          else
+            echo "::warning::API não respondeu 200 após 4 tentativas — verificar Render"
+            exit 1
+          fi
