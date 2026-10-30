@@ -228,13 +228,14 @@ def add_security_headers(response):
 
     # Content Security Policy - Relaxar para Swagger UI
     if request.path.startswith("/api/docs") or request.path.startswith("/swaggerui"):
-        # Swagger UI precisa de 'unsafe-inline' e 'unsafe-eval' para JavaScript
+        # Swagger UI custom usa CDN (jsdelivr) + 'unsafe-inline'/'unsafe-eval'
         response.headers["Content-Security-Policy"] = (
             "default-src 'self'; "
-            "script-src 'self' 'unsafe-inline' 'unsafe-eval'; "
-            "style-src 'self' 'unsafe-inline'; "
-            "img-src 'self' data:; "
-            "font-src 'self' data:"
+            "script-src 'self' https://cdn.jsdelivr.net 'unsafe-inline' 'unsafe-eval'; "
+            "style-src 'self' https://cdn.jsdelivr.net 'unsafe-inline'; "
+            "img-src 'self' data: https://cdn.jsdelivr.net; "
+            "font-src 'self' data: https://cdn.jsdelivr.net; "
+            "connect-src 'self' https://cdn.jsdelivr.net"
         )
     else:
         # CSP restritivo para outras rotas

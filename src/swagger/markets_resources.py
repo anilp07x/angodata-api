@@ -76,6 +76,7 @@ class MarketResource(Resource):
     @markets_ns.response(400, "Dados inválidos", error_response)
     @markets_ns.response(401, "Não autorizado", error_response)
     @markets_ns.response(404, "Mercado não encontrado", error_response)
+    @markets_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def put(self, id):
         """Atualiza mercado existente (requer autenticação)"""
@@ -101,6 +102,7 @@ class MarketResource(Resource):
     @markets_ns.response(200, "Mercado removido com sucesso")
     @markets_ns.response(401, "Não autorizado", error_response)
     @markets_ns.response(404, "Mercado não encontrado", error_response)
+    @markets_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def delete(self, id):
         """Remove mercado (requer autenticação)"""
@@ -122,6 +124,7 @@ class MarketCreateResource(Resource):
     @markets_ns.response(201, "Mercado criado com sucesso", market_response)
     @markets_ns.response(400, "Dados inválidos", error_response)
     @markets_ns.response(401, "Não autorizado", error_response)
+    @markets_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def post(self):
         """Cria novo mercado (requer autenticação)"""

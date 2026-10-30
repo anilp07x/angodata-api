@@ -76,6 +76,7 @@ class HospitalResource(Resource):
     @hospitals_ns.response(400, "Dados inválidos", error_response)
     @hospitals_ns.response(401, "Não autorizado", error_response)
     @hospitals_ns.response(404, "Hospital não encontrado", error_response)
+    @hospitals_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def put(self, id):
         """Atualiza hospital existente (requer autenticação)"""
@@ -101,6 +102,7 @@ class HospitalResource(Resource):
     @hospitals_ns.response(200, "Hospital removido com sucesso")
     @hospitals_ns.response(401, "Não autorizado", error_response)
     @hospitals_ns.response(404, "Hospital não encontrado", error_response)
+    @hospitals_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def delete(self, id):
         """Remove hospital (requer autenticação)"""
@@ -122,6 +124,7 @@ class HospitalCreateResource(Resource):
     @hospitals_ns.response(201, "Hospital criado com sucesso", hospital_response)
     @hospitals_ns.response(400, "Dados inválidos", error_response)
     @hospitals_ns.response(401, "Não autorizado", error_response)
+    @hospitals_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def post(self):
         """Cria novo hospital (requer autenticação)"""

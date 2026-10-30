@@ -1,5 +1,6 @@
 """
 Namespaces Swagger para autenticação.
+Models alinhados com a API real (AuthService / UserResponseSchema).
 """
 
 from flask_restx import Namespace, fields
@@ -11,17 +12,21 @@ auth_ns = Namespace("auth", description="Operações de autenticação e gerenci
 login_model = auth_ns.model(
     "Login",
     {
-        "email": fields.String(required=True, description="Email do usuário", example="admin@angodata.ao"),
-        "password": fields.String(required=True, description="Senha do usuário", example="admin123"),
+        "email": fields.String(required=True, description="Email do usuário", example="anilpedro07@gmail.com"),
+        "password": fields.String(required=True, description="Senha do usuário", example="sua-senha"),
     },
 )
 
 register_model = auth_ns.model(
     "Register",
     {
-        "email": fields.String(required=True, description="Email do usuário", example="user@example.com"),
-        "password": fields.String(required=True, description="Senha (mínimo 6 caracteres)", example="senha123"),
-        "nome": fields.String(required=True, description="Nome completo", example="João Silva"),
+        "username": fields.String(
+            required=True, description="Nome do usuário (mín 3, máx 50 caracteres)", example="João Silva"
+        ),
+        "email": fields.String(required=True, description="Email válido", example="joao@example.com"),
+        "password": fields.String(
+            required=True, description="Senha (mínimo 8, máximo 100 caracteres)", example="senhaForte123"
+        ),
         "role": fields.String(description="Role do usuário", enum=["admin", "editor", "user"], default="user"),
     },
 )
@@ -30,7 +35,7 @@ change_password_model = auth_ns.model(
     "ChangePassword",
     {
         "current_password": fields.String(required=True, description="Senha atual"),
-        "new_password": fields.String(required=True, description="Nova senha (mínimo 6 caracteres)"),
+        "new_password": fields.String(required=True, description="Nova senha (mínimo 8 caracteres)"),
     },
 )
 
@@ -38,19 +43,19 @@ user_response = auth_ns.model(
     "UserResponse",
     {
         "id": fields.Integer(description="ID do usuário"),
+        "username": fields.String(description="Nome do usuário"),
         "email": fields.String(description="Email"),
-        "nome": fields.String(description="Nome completo"),
-        "role": fields.String(description="Role do usuário"),
-        "ativo": fields.Boolean(description="Status ativo"),
-        "criado_em": fields.DateTime(description="Data de criação"),
+        "role": fields.String(description="Role do usuário", enum=["admin", "editor", "user"]),
+        "created_at": fields.String(description="Data de criação (ISO 8601)"),
     },
 )
 
 token_response = auth_ns.model(
     "TokenResponse",
     {
-        "access_token": fields.String(description="Token JWT de acesso"),
-        "user": fields.Nested(user_response, description="Dados do usuário"),
+        "access_token": fields.String(description="Token JWT de acesso (validade 24h)"),
+        "refresh_token": fields.String(description="Token JWT de renovação (validade 30 dias)"),
+        "user": fields.Nested(user_response, description="Dados do usuário autenticado"),
     },
 )
 

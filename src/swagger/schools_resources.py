@@ -76,6 +76,7 @@ class SchoolResource(Resource):
     @schools_ns.response(400, "Dados inválidos", error_response)
     @schools_ns.response(401, "Não autorizado", error_response)
     @schools_ns.response(404, "Escola não encontrada", error_response)
+    @schools_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def put(self, id):
         """Atualiza escola existente (requer autenticação)"""
@@ -101,6 +102,7 @@ class SchoolResource(Resource):
     @schools_ns.response(200, "Escola removida com sucesso")
     @schools_ns.response(401, "Não autorizado", error_response)
     @schools_ns.response(404, "Escola não encontrada", error_response)
+    @schools_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def delete(self, id):
         """Remove escola (requer autenticação)"""
@@ -122,6 +124,7 @@ class SchoolCreateResource(Resource):
     @schools_ns.response(201, "Escola criada com sucesso", school_response)
     @schools_ns.response(400, "Dados inválidos", error_response)
     @schools_ns.response(401, "Não autorizado", error_response)
+    @schools_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def post(self):
         """Cria nova escola (requer autenticação)"""

@@ -89,6 +89,7 @@ class MeResource(Resource):
     @auth_ns.response(200, "Informações do usuário", user_response)
     @auth_ns.response(401, "Não autorizado", error_response)
     @auth_ns.response(404, "Usuário não encontrado", error_response)
+    @auth_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def get(self):
         """Retorna informações do usuário autenticado"""
@@ -105,6 +106,7 @@ class MeResource(Resource):
 class RefreshResource(Resource):
     @auth_ns.doc("refresh_token", security="Bearer")
     @auth_ns.response(200, "Token renovado", token_response)
+    @auth_ns.doc(security=[("Bearer", [])])
     @auth_ns.response(401, "Token inválido", error_response)
     @jwt_required(refresh=True)
     def post(self):
@@ -136,6 +138,7 @@ class ChangePasswordResource(Resource):
     @auth_ns.response(200, "Senha alterada com sucesso", success_response)
     @auth_ns.response(400, "Dados inválidos", error_response)
     @auth_ns.response(401, "Senha atual incorreta", error_response)
+    @auth_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def put(self):
         """Altera a senha do usuário autenticado"""
@@ -173,6 +176,7 @@ class UserListResource(Resource):
     @auth_ns.response(200, "Lista de usuários", success_response)
     @auth_ns.response(401, "Não autorizado", error_response)
     @auth_ns.response(403, "Sem permissão (apenas Admin)", error_response)
+    @auth_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def get(self):
         """Lista todos os usuários (apenas Admin)"""

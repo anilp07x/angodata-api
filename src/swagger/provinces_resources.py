@@ -92,6 +92,7 @@ class ProvinceResource(Resource):
     @provinces_ns.response(200, "Província atualizada com sucesso", province_response)
     @provinces_ns.response(404, "Província não encontrada", error_response)
     @provinces_ns.response(401, "Não autorizado", error_response)
+    @provinces_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def put(self, id):
         """Atualiza província existente (requer autenticação Editor ou Admin)"""
@@ -116,6 +117,7 @@ class ProvinceResource(Resource):
     @provinces_ns.response(200, "Província deletada com sucesso")
     @provinces_ns.response(404, "Província não encontrada", error_response)
     @provinces_ns.response(401, "Não autorizado", error_response)
+    @provinces_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def delete(self, id):
         """Deleta província (requer autenticação Admin)"""
@@ -134,6 +136,7 @@ class ProvinceCreateResource(Resource):
     @provinces_ns.response(201, "Província criada com sucesso", province_response)
     @provinces_ns.response(400, "Dados inválidos", error_response)
     @provinces_ns.response(401, "Não autorizado", error_response)
+    @provinces_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def post(self):
         """Cria nova província (requer autenticação Editor ou Admin)"""
@@ -158,6 +161,7 @@ class ProvinceBulkCreateResource(Resource):
     @provinces_ns.expect(bulk_create_input)
     @provinces_ns.response(201, "Províncias criadas com sucesso", bulk_response)
     @provinces_ns.response(401, "Não autorizado", error_response)
+    @provinces_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def post(self):
         """Cria múltiplas províncias de uma vez (requer autenticação Editor ou Admin)"""

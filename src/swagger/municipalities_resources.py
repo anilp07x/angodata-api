@@ -76,6 +76,7 @@ class MunicipalityResource(Resource):
     @municipalities_ns.response(200, "Município atualizado", municipality_response)
     @municipalities_ns.response(404, "Município não encontrado", error_response)
     @municipalities_ns.response(401, "Não autorizado", error_response)
+    @municipalities_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def put(self, id):
         """Atualiza município (requer autenticação Editor ou Admin)"""
@@ -101,6 +102,7 @@ class MunicipalityResource(Resource):
     @municipalities_ns.response(200, "Município deletado")
     @municipalities_ns.response(404, "Município não encontrado", error_response)
     @municipalities_ns.response(401, "Não autorizado", error_response)
+    @municipalities_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def delete(self, id):
         """Deleta município (requer autenticação Admin)"""
@@ -119,6 +121,7 @@ class MunicipalityCreateResource(Resource):
     @municipalities_ns.response(201, "Município criado", municipality_response)
     @municipalities_ns.response(400, "Dados inválidos", error_response)
     @municipalities_ns.response(401, "Não autorizado", error_response)
+    @municipalities_ns.doc(security=[("Bearer", [])])
     @jwt_required()
     def post(self):
         """Cria novo município (requer autenticação Editor ou Admin)"""

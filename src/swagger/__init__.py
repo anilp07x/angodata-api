@@ -14,7 +14,7 @@ api = Api(
     version="1.0.0",
     title="AngoData API",
     description="""
-REST API que fornece dados públicos de Angola.
+**REST API que fornece dados públicos de Angola.**
 
 ## Recursos Disponíveis
 
@@ -26,16 +26,18 @@ REST API que fornece dados públicos de Angola.
 
 ## Autenticação
 
-A API utiliza JWT (JSON Web Tokens) para autenticação. Para acessar endpoints protegidos:
+A API utiliza JWT (JSON Web Tokens). Para endpoints protegidos (🔒):
 
-1. Obtenha um token através do endpoint `/auth/login`
-2. Inclua o token no header: `Authorization: Bearer <seu-token>`
+1. Faça `POST /auth/login` para obter o token
+2. Clique no botão **Authorize** (ou o cadeado no endpoint) e cole o token
+3. O header enviado será: `Authorization: Bearer <seu-token>`
 
 ## Rate Limiting
 
-- 100 requisições por minuto por IP
-- Endpoints públicos: sem autenticação necessária
-- Endpoints protegidos: requerem autenticação JWT
+- **200 requisições por dia** (padrão, por IP)
+- **50 requisições por hora**
+- Login: **5 tentativas por minuto**
+- Excedores retornam `429 Too Many Requests`
 
 ## Paginação
 
@@ -47,8 +49,13 @@ Endpoints de listagem suportam paginação:
 - `search`: termo de busca
 
 Exemplo: `/provinces/all?page=1&per_page=20&sort_by=nome&order=asc&search=Luanda`
+
+## Modo de uso
+
+- GETs públicos: livres, sem autenticação
+- POST/PUT/DELETE: exigem **Authorize** com o token JWT
     """,
-    doc="/docs",
+    doc=False,  # UI customizada em docs_ui.py (rota /docs) — desliga a UI vanilla do flask-restx
     authorizations={
         "Bearer": {
             "type": "apiKey",
@@ -57,7 +64,6 @@ Exemplo: `/provinces/all?page=1&per_page=20&sort_by=nome&order=asc&search=Luanda
             "description": "Adicione o token JWT no formato: Bearer <token>",
         }
     },
-    security="Bearer",
     contact="Anilson Pedro",
     contact_email="anilpedro07x@outlook.com",
     license="MIT",
@@ -98,5 +104,18 @@ def init_swagger(app):
     Args:
         app: Instância Flask
     """
+    from flask import Response
+
+    from src.swagger.docs_ui import get_docs_page
+
+    @api_bp.route("/docs")
+    def swagger_docs():
+        """Página de documentação customizada (Swagger UI, tema Angola)."""
+        return Response(
+            get_docs_page(spec_url="/api/swagger.json"),
+            mimetype="text/html; charset=utf-8",
+            headers={"Cache-Control": "no-store"},
+        )
+
     app.register_blueprint(api_bp, url_prefix="/api")
     print("✓ Swagger/OpenAPI inicializado em /api/docs")
